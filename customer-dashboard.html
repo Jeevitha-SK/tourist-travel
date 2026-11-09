@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard | TransVoyage Tourist Bus & Traveller Rentals</title>
+  <meta name="description" content="Manage your vehicle bookings, track live GPS location of your tourist bus, download trip vouchers, and view payment receipts.">
+
+  
+  <!-- Favicon / Website Brand Symbol -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+<!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-topography-pattern text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- ================= TOP HEADER BAR ================= -->
+  <header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3 flex items-center justify-between">
+    <!-- Brand / Drawer Toggle -->
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center text-sm shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-bus"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white font-heading uppercase">Trans<span class="text-amber-500">Voyage</span></span>
+        </div>
+      </a>
+      <span class="hidden sm:inline-block text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-300/40">
+        Customer Portal
+      </span>
+    </div>
+
+    <!-- Actions & User Profile -->
+    <div class="flex items-center gap-3">
+      <!-- RTL Toggle -->
+      <button class="rtl-toggle-btn px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all" title="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle-btn w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-amber-500 flex items-center justify-center shadow-sm transition-all" title="Toggle Theme">
+        <i class="fa-solid fa-sun text-amber-400 theme-icon-light hidden text-xs"></i>
+        <i class="fa-solid fa-moon text-slate-700 dark:text-slate-300 theme-icon-dark text-xs"></i>
+      </button>
+
+      <!-- Notifications -->
+      <div class="relative">
+        <button onclick="if(window.showToast) showToast('Driver Rajesh Kumar assigned to your Coorg trip!', 'info')" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm relative">
+          <i class="fa-solid fa-bell"></i>
+          <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"></span>
+        </button>
+      </div>
+
+      <!-- User Chip -->
+      <div class="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Sarah Jenkins" class="w-8 h-8 rounded-full object-cover border border-blue-500">
+        <div class="hidden md:block text-left text-xs">
+          <p class="font-bold text-slate-900 dark:text-white leading-tight">Sarah Jenkins</p>
+          <p class="text-[10px] text-slate-400">sarah.j@techsolutions.com</p>
+        </div>
+      </div>
+
+      <a href="login.html" class="p-2 text-slate-400 hover:text-red-500 text-sm" title="Log Out">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= DASHBOARD LAYOUT ================= -->
+  <div class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row gap-8">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-full lg:w-72 xl:w-80 space-y-4 shrink-0">
+      <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1.5">
+        
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left bg-blue-600 text-white shadow-md" data-target="tab-overview">
+          <i class="fa-solid fa-house w-5 text-center shrink-0"></i>
+          <span class="flex-1 whitespace-nowrap">Dashboard Overview</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="tab-book-vehicle">
+          <i class="fa-solid fa-van-shuttle w-5 text-center shrink-0 text-amber-500"></i>
+          <span class="flex-1 whitespace-nowrap">Book a Vehicle</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="tab-bookings">
+          <i class="fa-solid fa-ticket w-5 text-center shrink-0 text-blue-500"></i>
+          <span class="flex-1 whitespace-nowrap">Trip Details &amp; Bookings (<span id="sidebar-bookings-count">3</span>)</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="tab-payments">
+          <i class="fa-solid fa-credit-card w-5 text-center shrink-0 text-emerald-500"></i>
+          <span class="flex-1 whitespace-nowrap">Manage Payments &amp; Invoices</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="tab-tracking">
+          <i class="fa-solid fa-location-crosshairs w-5 text-center shrink-0 text-rose-500"></i>
+          <span class="flex-1 whitespace-nowrap">Live GPS Radar</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="tab-travelers">
+          <i class="fa-solid fa-users w-5 text-center shrink-0 text-slate-500"></i>
+          <span class="flex-1 whitespace-nowrap">Saved Co-Travelers</span>
+        </button>
+
+        <div class="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800">
+          <button onclick="document.querySelector('[data-target=\'tab-book-vehicle\']').click()" class="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 shadow transition-colors">
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>Book New Vehicle</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick 24/7 Helpline Card -->
+      <div class="bg-gradient-to-br from-blue-900 to-indigo-900 text-white p-5 rounded-2xl shadow-lg space-y-2">
+        <i class="fa-solid fa-headset text-2xl text-blue-300"></i>
+        <h4 class="font-bold text-xs">Dedicated Trip Concierge</h4>
+        <p class="text-[11px] text-blue-200">Have an urgent itinerary shift or extra stop request?</p>
+        <a href="tel:+919876543210" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:underline pt-1">
+          <i class="fa-solid fa-phone"></i> +91 98765 43210
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 space-y-6">
+
+      <!-- Frontend Prototype Demo Notice Banner -->
+      <div class="p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/60 flex items-start gap-3.5 text-xs text-blue-900 dark:text-blue-200">
+        <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400 text-base mt-0.5 flex-shrink-0"></i>
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <strong class="font-bold text-sm">Frontend Prototype Demonstration Portal</strong>
+            <span class="px-2 py-0.2 rounded-full text-[10px] font-bold bg-blue-200 text-blue-900 dark:bg-blue-800 dark:text-blue-100 uppercase">Demo Simulation</span>
+          </div>
+          <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+            This customer dashboard demonstrates complete tourist charter management (vehicle booking, GPS radar simulation, GST invoice downloads, and booking cancellations) using client-side <code class="bg-blue-100 dark:bg-slate-800 px-1 py-0.5 rounded font-mono text-[11px]">localStorage</code>. For production, connect with backend RESTful APIs (Node.js/Django/PHP), PostgreSQL/MySQL databases, and an authorized payment gateway (Razorpay/Stripe) for live monetary transactions.
+          </p>
+        </div>
+      </div>
+
+      <!-- ================= TAB 1: OVERVIEW ================= -->
+      <div id="tab-overview" class="dashboard-tab-content space-y-6">
+        
+        <!-- Welcome Hero Banner (Unified Attractive Scenic Background) -->
+        <div class="bg-banner-customer-dashboard text-white p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <div class="space-y-2 text-center sm:text-left relative z-10">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-400/30">
+              <i class="fa-solid fa-crown text-amber-400"></i> Customer Loyalty Tier: Gold
+            </span>
+            <h1 class="page-hero-title text-white">Welcome Back, Sarah!</h1>
+            <p class="text-xs text-slate-200 max-w-md leading-relaxed">Your upcoming outstation journey to Coorg with 17-seater Force Urbania is confirmed. Chauffeur details and live GPS tracking are active.</p>
+          </div>
+          <div class="relative z-10 flex flex-wrap items-center gap-3">
+            <button class="btn-track-trip px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-lg flex items-center gap-2 whitespace-nowrap transition-transform hover:scale-105" data-trip-id="TV-2026-981">
+              <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
+              <span>Track Trip Live (GPS)</span>
+            </button>
+            <button class="btn-view-trip-details px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white border border-white/20 font-bold text-xs shadow flex items-center gap-2 whitespace-nowrap transition-colors" data-trip-id="TV-2026-981">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>View Trip Details</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Core Customer Capabilities: Book Vehicles, View Trip Details, Manage Payments -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Pillar 1: Book Vehicles -->
+          <div onclick="document.querySelector('[data-target=\'tab-book-vehicle\']').click()" class="bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent p-5 rounded-2xl border border-blue-200 dark:border-blue-900/40 hover:border-blue-500 shadow-sm cursor-pointer transition-all hover:scale-[1.02] group">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shadow-md group-hover:rotate-6 transition-transform">
+                <i class="fa-solid fa-van-shuttle"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950/60 px-2 py-0.5 rounded-full">
+                Instant Reservation
+              </span>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base font-heading group-hover:text-blue-600 transition-colors">Book Vehicles</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Reserve luxury tempo travellers and tourist coaches (9 to 53 seats) with live guaranteed per-km rates.</p>
+            <div class="flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 pt-3">
+              <span>Reserve a Coach</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Pillar 2: View Trip Details -->
+          <div onclick="document.querySelector('[data-target=\'tab-bookings\']').click()" class="bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent p-5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40 hover:border-emerald-500 shadow-sm cursor-pointer transition-all hover:scale-[1.02] group">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-md group-hover:rotate-6 transition-transform">
+                <i class="fa-solid fa-route"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full">
+                Live AIS-140 GPS
+              </span>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base font-heading group-hover:text-emerald-600 transition-colors">View Trip Details</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Inspect active route timelines, assigned police-verified chauffeurs, live GPS speed radar, and passenger manifests.</p>
+            <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-3">
+              <span>View Active Bookings</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Manage Payments -->
+          <div onclick="document.querySelector('[data-target=\'tab-payments\']').click()" class="bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent p-5 rounded-2xl border border-amber-200 dark:border-amber-900/40 hover:border-amber-500 shadow-sm cursor-pointer transition-all hover:scale-[1.02] group">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-lg shadow-md group-hover:rotate-6 transition-transform">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-950/60 px-2 py-0.5 rounded-full">
+                GST Tax Invoices
+              </span>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-base font-heading group-hover:text-amber-500 transition-colors">Manage Payments</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Settle outstanding trip balances, review transparent itemized billing, top up wallet, and download official tax invoices.</p>
+            <div class="flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 pt-3">
+              <span>Manage Invoices &amp; Pay</span>
+              <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p class="text-[11px] text-slate-400">Total Trips Taken</p>
+            <p class="text-2xl font-black text-slate-900 dark:text-white font-heading mt-1" id="kpi-total-trips">8 Trips</p>
+            <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-arrow-trend-up"></i> 3,450 km logged</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p class="text-[11px] text-slate-400">Upcoming Booking</p>
+            <p class="text-2xl font-black text-blue-600 font-heading mt-1" id="kpi-upcoming-trip">In 3 Days</p>
+            <span class="text-[10px] text-slate-500">Nov 07, 06:30 AM</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p class="text-[11px] text-slate-400">TransVoyage Wallet</p>
+            <p class="text-2xl font-black text-emerald-600 font-heading mt-1" id="kpi-wallet-balance">₹2,450</p>
+            <button onclick="openTopUpModal()" class="text-[10px] text-blue-600 dark:text-blue-400 hover:underline font-bold">+ Top Up Wallet</button>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <p class="text-[11px] text-slate-400">Pending Invoices</p>
+            <p class="text-2xl font-black text-slate-900 dark:text-white font-heading mt-1" id="kpi-pending-invoice">₹4,100</p>
+            <button onclick="openPaymentModal(4100, 'TV-2026-981')" class="text-[10px] text-amber-600 dark:text-amber-400 hover:underline font-bold">Pay Now ➔</button>
+          </div>
+        </div>
+
+        <!-- Active Upcoming Trip Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+          <div class="bg-slate-50 dark:bg-slate-800/60 px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-slate-400 uppercase">Trip Ref:</span>
+              <strong class="text-sm font-bold text-slate-900 dark:text-white">TV-2026-981</strong>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                <i class="fa-solid fa-circle-check mr-1"></i> Confirmed & Chauffeur Allocated
+              </span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="btn-view-trip-details px-3 py-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-xs font-bold flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                <i class="fa-solid fa-circle-info"></i> Trip Details
+              </button>
+              <button class="btn-view-invoice px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                <i class="fa-solid fa-file-invoice"></i> Download Invoice
+              </button>
+              <button class="btn-cancel-trip px-3 py-1.5 rounded-lg border border-rose-300 dark:border-rose-800 hover:bg-rose-50 dark:hover:bg-rose-950 text-rose-600 dark:text-rose-400 text-xs font-bold flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                <i class="fa-solid fa-ban"></i> Cancel Booking
+              </button>
+            </div>
+          </div>
+
+          <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Left: Fleet & Route -->
+            <div class="space-y-4 md:col-span-2">
+              <div class="flex items-start gap-4">
+                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=300&q=80" alt="Force Urbania" class="w-24 h-20 rounded-xl object-cover shadow-sm">
+                <div>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">17-Seater Force Urbania VIP Luxury</h3>
+                  <p class="text-xs text-slate-500">Vehicle Reg: <strong>KA-01-MJ-9921</strong> • GPS Unit ID: #4409</p>
+                  <p class="text-xs text-emerald-600 font-semibold mt-1"><i class="fa-solid fa-snowflake"></i> Chilled Climate AC • Reclining Seats • 17 Pax Capacity</p>
+                </div>
+              </div>
+
+              <!-- Route Timeline -->
+              <div class="grid grid-cols-2 gap-4 bg-slate-50 dark:bg-slate-800/40 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 text-xs">
+                <div>
+                  <p class="text-slate-400 font-medium">Pickup Location & Time</p>
+                  <p class="font-bold text-slate-900 dark:text-white mt-1">Bangalore Airport Terminal 1</p>
+                  <p class="text-slate-500">Nov 07, 2026 • 06:30 AM</p>
+                </div>
+                <div>
+                  <p class="text-slate-400 font-medium">Destination</p>
+                  <p class="font-bold text-slate-900 dark:text-white mt-1">Madikeri & Coorg Resort Circuit</p>
+                  <p class="text-slate-500">Return: Nov 10, 2026 • 08:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Driver Info & Live Action -->
+            <div class="bg-blue-50/50 dark:bg-slate-800/60 p-4 rounded-2xl border border-blue-100 dark:border-slate-800 flex flex-col justify-between">
+              <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Assigned Chauffeur</p>
+                <div class="flex items-center gap-3 mb-3">
+                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=120&q=80" class="w-12 h-12 rounded-full object-cover border-2 border-blue-500" alt="Rajesh Kumar Chauffeur">
+                  <div>
+                    <p class="text-sm font-bold text-slate-900 dark:text-white">Rajesh Kumar</p>
+                    <p class="text-xs text-amber-500 font-semibold"><i class="fa-solid fa-star"></i> 4.9 (420+ tours)</p>
+                  </div>
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300">
+                  <i class="fa-solid fa-id-card-clip text-blue-500 mr-1"></i> Background Vetted • COVID Vaccinated
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-blue-100 dark:border-slate-700 space-y-2">
+                <a href="tel:+919876543210" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold text-center block shadow">
+                  <i class="fa-solid fa-phone mr-1"></i> Call Chauffeur (+91 98765 43210)
+                </a>
+                <button class="btn-track-trip w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold text-center block shadow" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-location-arrow mr-1"></i> Open Live Route Map
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= TAB: BOOK A VEHICLE ================= -->
+      <div id="tab-book-vehicle" class="dashboard-tab-content hidden space-y-6">
+        <!-- Booking Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 dark:text-white font-heading">Book a Tourist Bus or Traveller</h2>
+            <p class="text-xs text-slate-500">Instant reservation with transparent per-km billing, verified chauffeur assignment, and sanitized vehicle guarantee.</p>
+          </div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-300/40">
+            <i class="fa-solid fa-bolt text-amber-500"></i> Instant Confirmation
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Left: Booking Form (8 Cols) -->
+          <div class="lg:col-span-8 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            <form id="dash-booking-form" onsubmit="handleDashboardBooking(event)" class="space-y-5">
+              
+              <!-- Trip Type Tabs -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">1. Select Trip Type</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <button type="button" class="dash-trip-type-btn py-2.5 px-3 rounded-xl border border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 font-bold text-xs flex flex-col items-center gap-1 transition-all" data-type="outstation">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                    <span>Outstation Round Trip</span>
+                  </button>
+                  <button type="button" class="dash-trip-type-btn py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 font-semibold text-xs flex flex-col items-center gap-1 transition-all" data-type="local">
+                    <i class="fa-solid fa-city"></i>
+                    <span>Local 8h / 80km</span>
+                  </button>
+                  <button type="button" class="dash-trip-type-btn py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 font-semibold text-xs flex flex-col items-center gap-1 transition-all" data-type="airport">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <span>Airport Transfer</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Route & Dates -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">2. Route &amp; Travel Schedule</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[11px] font-medium text-slate-500 mb-1">Pickup City / Starting Point</label>
+                    <div class="relative">
+                      <i class="fa-solid fa-location-dot absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-500 text-xs"></i>
+                      <input type="text" id="dash-pickup" required value="Bangalore Central / Airport" class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-[11px] font-medium text-slate-500 mb-1">Destination Circuit</label>
+                    <div class="relative">
+                      <i class="fa-solid fa-flag-checkered absolute left-3.5 top-1/2 -translate-y-1/2 text-rose-500 text-xs"></i>
+                      <input type="text" id="dash-destination" required value="Ooty - Coonoor - Mudumalai" class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-[11px] font-medium text-slate-500 mb-1">Departure Date &amp; Time</label>
+                    <div class="relative">
+                      <i class="fa-solid fa-calendar-days absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                      <input type="date" id="dash-departure-date" required class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-[11px] font-medium text-slate-500 mb-1">Return Date</label>
+                    <div class="relative">
+                      <i class="fa-solid fa-calendar-check absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                      <input type="date" id="dash-return-date" required class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vehicle Selection -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">3. Choose Vehicle Model &amp; Capacity</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="dash-vehicle-options">
+                  <!-- 9S -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="9S" data-rate="20" data-min="250" data-batta="500" data-name="9-Seater Force Maharaja VIP" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-sm">9S</div>
+                      <div>
+                        <p class="font-bold text-xs text-slate-900 dark:text-white">9-Seater Maharaja VIP</p>
+                        <p class="text-[10px] text-slate-400">1x1 Captain Recliners • Dual AC</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 dark:text-white">₹20/km</span>
+                  </label>
+
+                  <!-- 12S -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="12S" data-rate="22" data-min="250" data-batta="500" data-name="12-Seater Luxury Tempo Traveller" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-sm">12S</div>
+                      <div>
+                        <p class="font-bold text-xs text-slate-900 dark:text-white">12-Seater Tempo Traveller</p>
+                        <p class="text-[10px] text-slate-400">2x1 Pushback • Big Luggage Boot</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 dark:text-white">₹22/km</span>
+                  </label>
+
+                  <!-- 17S Urbania (Selected by default) -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border-2 border-blue-600 bg-blue-50/50 dark:bg-blue-950/30 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="17S" data-rate="26" data-min="250" data-batta="600" data-name="17-Seater Force Urbania Luxury" checked class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm">17S</div>
+                      <div>
+                        <div class="flex items-center gap-1.5">
+                          <p class="font-bold text-xs text-slate-900 dark:text-white">17-Seater Force Urbania</p>
+                          <span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-amber-400 text-slate-950">Top Pick</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400">Whisper Quiet • USB at every seat</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-blue-600 dark:text-blue-400">₹26/km</span>
+                  </label>
+
+                  <!-- 26S Mini Coach -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="26S" data-rate="36" data-min="300" data-batta="800" data-name="26-Seater Mini Coach Bus" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-sm">26S</div>
+                      <div>
+                        <p class="font-bold text-xs text-slate-900 dark:text-white">26-Seater Mini Coach Bus</p>
+                        <p class="text-[10px] text-slate-400">2x2 Recliners • Tour Guide Mic</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 dark:text-white">₹36/km</span>
+                  </label>
+
+                  <!-- 45S Luxury Coach -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="45S" data-rate="52" data-min="300" data-batta="1200" data-name="45-Seater Ultra Deluxe AC Coach" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-sm">45S</div>
+                      <div>
+                        <p class="font-bold text-xs text-slate-900 dark:text-white">45-Seater Deluxe AC Coach</p>
+                        <p class="text-[10px] text-slate-400">Undercarriage Bags • Air Suspension</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 dark:text-white">₹52/km</span>
+                  </label>
+
+                  <!-- 53S Multi-Axle Volvo -->
+                  <label class="dash-vehicle-label relative p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 hover:border-blue-500 cursor-pointer transition-all flex items-center justify-between">
+                    <input type="radio" name="dash_vehicle" value="53S" data-rate="65" data-min="350" data-batta="1500" data-name="53-Seater Volvo 9600 Multi-Axle" class="sr-only">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-sm">53S</div>
+                      <div>
+                        <p class="font-bold text-xs text-slate-900 dark:text-white">53-Seater Volvo 9600</p>
+                        <p class="text-[10px] text-slate-400">Multi-Axle • Luxury Sleeper/Seater</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-900 dark:text-white">₹65/km</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Passenger Manifest & Special Notes -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-500 mb-1">Lead Passenger Name</label>
+                  <input type="text" id="dash-lead-name" required value="Sarah Jenkins" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-medium text-slate-500 mb-1">Contact Phone (for Driver SMS/Call)</label>
+                  <input type="tel" id="dash-lead-phone" required value="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 text-slate-900 dark:text-white">
+                </div>
+              </div>
+
+              <!-- Special Options -->
+              <div class="flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-slate-300">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded text-blue-600 focus:ring-blue-500">
+                  <span>All-India Tourist Permit Included</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded text-blue-600 focus:ring-blue-500">
+                  <span>Air-Conditioning Active on Hill Climbs</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500">
+                  <span>Rooftop Luggage Carrier Rack Required</span>
+                </label>
+              </div>
+
+              <button type="submit" class="w-full py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-2xl shadow-lg shadow-amber-500/25 text-sm transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Confirm Vehicle Charter &amp; Reserve</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right: Live Cost Calculation Sidebar (4 Cols) -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="bg-gradient-to-br from-slate-900 to-blue-950 text-white p-6 rounded-3xl shadow-xl border border-slate-800 space-y-4 sticky top-24">
+              <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 class="font-black text-sm uppercase tracking-wider text-amber-400">Fare Summary</h3>
+                <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded text-slate-300">Auto-Computed</span>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <div class="flex justify-between text-slate-300">
+                  <span>Vehicle:</span>
+                  <strong id="calc-vehicle-name" class="text-white text-right font-semibold">17S Force Urbania</strong>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Estimated Days:</span>
+                  <span id="calc-trip-days" class="font-semibold text-white">3 Days</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Minimum Distance:</span>
+                  <span id="calc-trip-km" class="font-semibold text-white">750 km (250 km/day)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Per-Km Rate:</span>
+                  <span id="calc-rate-km" class="font-semibold text-white">₹26 / km</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>Driver Daily Batta:</span>
+                  <span id="calc-batta" class="font-semibold text-white">₹1,800 (₹600 × 3d)</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>GST (5% Transport):</span>
+                  <span id="calc-gst" class="font-semibold text-white">₹1,065</span>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-slate-400 block uppercase">Total Estimated Fare</span>
+                  <span id="calc-grand-total" class="text-2xl font-black text-amber-400 font-heading">₹22,365</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-emerald-400 block uppercase">25% Advance Due</span>
+                  <span id="calc-advance-due" class="text-lg font-bold text-white">₹5,591</span>
+                </div>
+              </div>
+
+              <div class="bg-white/5 p-3 rounded-xl border border-white/10 text-[11px] text-slate-300 space-y-1">
+                <p class="flex items-center gap-1.5"><i class="fa-solid fa-shield-check text-emerald-400"></i> Free cancellation up to 24h prior.</p>
+                <p class="flex items-center gap-1.5"><i class="fa-solid fa-gas-pump text-amber-400"></i> Diesel fuel included for trip duration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 2: MY BOOKINGS ================= -->
+      <div id="tab-bookings" class="dashboard-tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-black text-slate-900 dark:text-white font-heading">My Vehicle Bookings</h2>
+            <p class="text-xs text-slate-500">Review all active, past, and upcoming tourist charters.</p>
+          </div>
+
+          <!-- Status Filters & New Booking CTA -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <button class="booking-filter-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white" data-status="all">All</button>
+            <button class="booking-filter-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" data-status="upcoming">Upcoming</button>
+            <button class="booking-filter-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" data-status="completed">Completed</button>
+            <button class="booking-filter-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" data-status="cancelled">Cancelled</button>
+            <button onclick="document.querySelector('[data-target=\'tab-book-vehicle\']').click()" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 flex items-center gap-1.5 shadow-sm transition-colors">
+              <i class="fa-solid fa-plus text-[10px]"></i> New Booking
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic User Bookings Container (New bookings appear here) -->
+        <div id="dynamic-booking-cards" class="space-y-4"></div>
+
+        <div class="space-y-4">
+          <!-- Item 1: Upcoming Coorg -->
+          <div class="booking-item-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow transition-all overflow-hidden" data-status="upcoming" id="card-trip-TV-2026-981">
+            <!-- Header: Vehicle + Trip Ref + Status + Price -->
+            <div class="p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3 bg-slate-50/60 dark:bg-slate-800/30">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg font-bold shrink-0">
+                  <i class="fa-solid fa-van-shuttle"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-mono text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-900/40">TV-2026-981</span>
+                    <span class="text-sm font-bold text-slate-900 dark:text-white font-heading">17-Seater Force Urbania</span>
+                    <span class="trip-status-pill px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                      <i class="fa-solid fa-circle-check mr-1 text-[9px]"></i> Confirmed
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-xs">
+                <span class="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-wider">Total Fare:</span>
+                <span class="text-base font-extrabold text-slate-900 dark:text-white font-heading">₹16,400</span>
+              </div>
+            </div>
+
+            <!-- Body: Route and Travel Dates -->
+            <div class="p-4 sm:p-5 py-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs bg-white dark:bg-slate-900">
+              <div class="flex items-center gap-2 flex-wrap text-slate-700 dark:text-slate-200">
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-circle-dot text-[10px] text-emerald-500"></i> Bangalore Airport Terminal 1
+                </span>
+                <i class="fa-solid fa-arrow-right-long text-slate-400 text-xs px-1 shrink-0"></i>
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-location-dot text-[10px] text-rose-500"></i> Madikeri &amp; Coorg Circuit
+                </span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap text-slate-600 dark:text-slate-400">
+                <span class="inline-flex items-center gap-1.5 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-slate-700 font-medium">
+                  <i class="fa-regular fa-calendar text-blue-500"></i> Nov 07 – Nov 10, 2026
+                </span>
+                <span class="inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200/60 dark:border-amber-900/40 px-2 py-1 rounded-lg font-bold">
+                  <i class="fa-regular fa-clock"></i> 4 Days
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer: Dedicated Action Bar -->
+            <div class="p-3 sm:p-4 px-4 sm:px-5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-50/40 dark:bg-slate-800/20">
+              <div class="text-[11px] text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block"></span>
+                <span>Assigned: Chauffeur Rajesh Kumar • KA-01-MJ-9921</span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap ml-auto">
+                <button class="btn-view-trip-details px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-circle-info text-blue-500"></i> Details
+                </button>
+                <button class="btn-view-invoice px-3 py-1.5 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-file-invoice text-slate-500"></i> Invoice
+                </button>
+                <button class="btn-track-trip px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-satellite-dish"></i> Track Live
+                </button>
+                <button class="btn-cancel-trip px-3 py-1.5 border border-rose-300 dark:border-rose-800 hover:bg-rose-50 dark:hover:bg-rose-950 text-rose-600 dark:text-rose-400 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-ban"></i> Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Completed Ooty -->
+          <div class="booking-item-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow transition-all overflow-hidden" data-status="completed" id="card-trip-TV-2026-742">
+            <!-- Header: Vehicle + Trip Ref + Status + Price -->
+            <div class="p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3 bg-slate-50/60 dark:bg-slate-800/30">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center text-lg font-bold shrink-0">
+                  <i class="fa-solid fa-bus"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700">TV-2026-742</span>
+                    <span class="text-sm font-bold text-slate-900 dark:text-white font-heading">26-Seater Mini Coach</span>
+                    <span class="trip-status-pill px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                      <i class="fa-solid fa-check-double mr-1 text-[9px]"></i> Completed
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-xs">
+                <span class="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-wider">Paid Total:</span>
+                <span class="text-base font-extrabold text-slate-900 dark:text-white font-heading">₹33,138</span>
+              </div>
+            </div>
+
+            <!-- Body: Route and Travel Dates -->
+            <div class="p-4 sm:p-5 py-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs bg-white dark:bg-slate-900">
+              <div class="flex items-center gap-2 flex-wrap text-slate-700 dark:text-slate-200">
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-circle-dot text-[10px] text-emerald-500"></i> Bangalore Central
+                </span>
+                <i class="fa-solid fa-arrow-right-long text-slate-400 text-xs px-1 shrink-0"></i>
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-location-dot text-[10px] text-rose-500"></i> Ooty ➔ Mysore Circuit
+                </span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap text-slate-600 dark:text-slate-400">
+                <span class="inline-flex items-center gap-1.5 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-slate-700 font-medium">
+                  <i class="fa-regular fa-calendar text-slate-400"></i> Oct 12 – Oct 15, 2026
+                </span>
+                <span class="inline-flex items-center gap-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-2 py-1 rounded-lg font-bold">
+                  <i class="fa-regular fa-clock"></i> 3 Days
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer: Dedicated Action Bar -->
+            <div class="p-3 sm:p-4 px-4 sm:px-5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-50/40 dark:bg-slate-800/20">
+              <div class="text-[11px] text-slate-500 flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                <span>Trip Concluded Successfully • Rated 5.0 ★</span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap ml-auto">
+                <button class="btn-view-trip-details px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-742">
+                  <i class="fa-solid fa-circle-info text-blue-500"></i> Details
+                </button>
+                <button class="btn-view-invoice px-3 py-1.5 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-742">
+                  <i class="fa-solid fa-receipt text-slate-500"></i> Download Receipt
+                </button>
+                <button onclick="document.querySelector('[data-target=\'tab-book-vehicle\']').click()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-lg text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5">
+                  <i class="fa-solid fa-rotate-right"></i> Re-Book Trip
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Completed Mysore Airport Drop -->
+          <div class="booking-item-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow transition-all overflow-hidden" data-status="completed" id="card-trip-TV-2026-411">
+            <!-- Header: Vehicle + Trip Ref + Status + Price -->
+            <div class="p-4 sm:p-5 pb-3 border-b border-slate-100 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3 bg-slate-50/60 dark:bg-slate-800/30">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center text-lg font-bold shrink-0">
+                  <i class="fa-solid fa-van-shuttle"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700">TV-2026-411</span>
+                    <span class="text-sm font-bold text-slate-900 dark:text-white font-heading">12-Seater Tempo Traveller</span>
+                    <span class="trip-status-pill px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                      <i class="fa-solid fa-check-double mr-1 text-[9px]"></i> Completed
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-xs">
+                <span class="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 tracking-wider">Paid Total:</span>
+                <span class="text-base font-extrabold text-slate-900 dark:text-white font-heading">₹4,200</span>
+              </div>
+            </div>
+
+            <!-- Body: Route and Travel Dates -->
+            <div class="p-4 sm:p-5 py-3.5 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs bg-white dark:bg-slate-900">
+              <div class="flex items-center gap-2 flex-wrap text-slate-700 dark:text-slate-200">
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-circle-dot text-[10px] text-emerald-500"></i> Whitefield IT Park
+                </span>
+                <i class="fa-solid fa-arrow-right-long text-slate-400 text-xs px-1 shrink-0"></i>
+                <span class="inline-flex items-center gap-1.5 font-semibold text-slate-900 dark:text-white">
+                  <i class="fa-solid fa-plane-departure text-[10px] text-blue-500"></i> Bangalore Airport Drop
+                </span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap text-slate-600 dark:text-slate-400">
+                <span class="inline-flex items-center gap-1.5 bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-slate-700 font-medium">
+                  <i class="fa-regular fa-calendar text-slate-400"></i> Aug 22, 2026
+                </span>
+                <span class="inline-flex items-center gap-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-2 py-1 rounded-lg font-bold">
+                  <i class="fa-regular fa-clock"></i> 1 Day Drop
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer: Dedicated Action Bar -->
+            <div class="p-3 sm:p-4 px-4 sm:px-5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-50/40 dark:bg-slate-800/20">
+              <div class="text-[11px] text-slate-500 flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                <span>Trip Concluded Successfully • Airport Transfer</span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap ml-auto">
+                <button class="btn-view-trip-details px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-411">
+                  <i class="fa-solid fa-circle-info text-blue-500"></i> Details
+                </button>
+                <button class="btn-view-invoice px-3 py-1.5 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-411">
+                  <i class="fa-solid fa-receipt text-slate-500"></i> Download Receipt
+                </button>
+                <button onclick="document.querySelector('[data-target=\'tab-book-vehicle\']').click()" class="px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-lg text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5">
+                  <i class="fa-solid fa-rotate-right"></i> Re-Book Trip
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: LIVE TRACKING ================= -->
+      <div id="tab-tracking" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">Real-Time Vehicle Fleet Radar</h2>
+              <p class="text-xs text-slate-500">Live GPS tracking active for Ref: <strong>TV-2026-981</strong></p>
+            </div>
+            <button class="btn-track-trip px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow flex items-center gap-2" data-trip-id="TV-2026-981">
+              <i class="fa-solid fa-expand"></i> Full Radar View
+            </button>
+          </div>
+
+          <div class="w-full h-96 bg-slate-100 dark:bg-slate-800 rounded-2xl relative overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
+            <!-- Live Route Map -->
+            <iframe 
+              src="https://maps.google.com/maps?q=Bangalore+-+Mysore+Expressway,+Karnataka&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=&amp;output=embed" 
+              class="w-full h-full border-0 absolute inset-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Bangalore - Mysore Expressway Live Fleet Radar">
+            </iframe>
+
+            <!-- Live Telematics Overlay Card -->
+            <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-slate-200/80 dark:border-slate-700/80 space-y-3 pointer-events-auto">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center text-lg shadow-md shadow-blue-500/30">
+                    <i class="fa-solid fa-bus"></i>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded border border-blue-200/60 dark:border-blue-900/40">KA-01-MJ-9921</span>
+                      <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                        <i class="fa-solid fa-satellite-dish mr-1"></i> 62 km/h
+                      </span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-900 dark:text-white font-heading mt-0.5">Bangalore - Mysore Expressway</p>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                Speed governor active at 80 km/h limit &bull; Chauffeur Rajesh Kumar &bull; Next halt: Mandya Food Plaza (ETA 28 min)
+              </p>
+              <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+                <button class="btn-track-trip px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold shadow-sm transition-colors flex items-center gap-1.5" data-trip-id="TV-2026-981">
+                  <i class="fa-solid fa-expand text-[10px]"></i> Open Full Telematics
+                </button>
+                <a href="https://maps.google.com/?q=Bangalore+-+Mysore+Expressway,+Karnataka" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline">
+                  Open in Maps &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 4: PAYMENTS & INVOICES ================= -->
+      <div id="tab-payments" class="dashboard-tab-content hidden space-y-6">
+        
+        <!-- Payment Summary KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Outstanding Balance Card -->
+          <div class="bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent p-5 rounded-3xl border border-amber-300 dark:border-amber-500/30 shadow-sm space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Outstanding Trip Balance</span>
+              <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-white font-heading" id="pay-outstanding-amt">₹4,100</p>
+            <p class="text-[11px] text-slate-500">Trip Ref: <strong>TV-2026-981</strong> (Post-Trip Final Settlement)</p>
+            <button onclick="openPaymentModal(4100, 'TV-2026-981')" id="btn-pay-outstanding" class="w-full py-2.5 px-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl text-xs shadow-md transition-all flex items-center justify-center gap-2 mt-2">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Pay Outstanding ₹4,100</span>
+            </button>
+          </div>
+
+          <!-- TransVoyage Wallet Card -->
+          <div class="bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent p-5 rounded-3xl border border-blue-200 dark:border-blue-500/30 shadow-sm space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">TransVoyage Wallet</span>
+              <i class="fa-solid fa-wallet text-blue-500"></i>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-white font-heading" id="pay-wallet-amt">₹2,450</p>
+            <p class="text-[11px] text-slate-500">Usable for instant advance payments & discounts</p>
+            <button onclick="openTopUpModal()" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs shadow-md transition-all flex items-center justify-center gap-2 mt-2">
+              <i class="fa-solid fa-plus-circle"></i>
+              <span>Top Up Wallet (+₹2,500)</span>
+            </button>
+          </div>
+
+          <!-- Total Lifetime Spend -->
+          <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Lifetime Verified Spend</span>
+              <i class="fa-solid fa-shield-check text-emerald-500"></i>
+            </div>
+            <p class="text-3xl font-black text-slate-900 dark:text-white font-heading" id="pay-total-spend">₹53,738</p>
+            <p class="text-[11px] text-emerald-600 font-semibold"><i class="fa-solid fa-file-circle-check"></i> 100% GST Invoices Available</p>
+            <button onclick="window.print()" class="w-full py-2.5 px-4 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2 mt-2">
+              <i class="fa-solid fa-print"></i>
+              <span>Print Annual Ledger</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Invoices & Billing Table -->
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">Payment History & Tax Invoices</h2>
+              <p class="text-xs text-slate-500">Download official GST-compliant tax invoices for corporate reimbursements.</p>
+            </div>
+            <button onclick="openPaymentModal(2500, 'ADVANCE-TOPUP')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm">
+              <i class="fa-solid fa-money-bill-wave"></i> Make Quick Payment
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-bold uppercase tracking-wider">
+                <tr>
+                  <th class="py-3 px-3">Invoice No.</th>
+                  <th class="py-3 px-3">Trip Ref</th>
+                  <th class="py-3 px-3">Date</th>
+                  <th class="py-3 px-3">Amount</th>
+                  <th class="py-3 px-3">Payment Mode</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="invoices-table-body" class="divide-y divide-slate-100 dark:divide-slate-800 font-medium">
+                <!-- TV-2026-981 Advance Paid -->
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                  <td class="py-3.5 px-3 font-bold text-blue-600">INV-2026-0981</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">TV-2026-981</td>
+                  <td class="py-3.5 px-3 text-slate-500">Nov 04, 2026</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹5,591</td>
+                  <td class="py-3.5 px-3 text-slate-500">UPI / GPay</td>
+                  <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-[10px]">ADVANCE PAID</span></td>
+                  <td class="py-3.5 px-3 text-right space-x-2">
+                    <button class="btn-view-invoice text-blue-600 hover:underline font-bold" data-trip-id="TV-2026-981">Download PDF</button>
+                  </td>
+                </tr>
+
+                <!-- TV-2026-742 Full Paid -->
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                  <td class="py-3.5 px-3 font-bold text-blue-600">INV-2026-0814</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">TV-2026-742</td>
+                  <td class="py-3.5 px-3 text-slate-500">Oct 15, 2026</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹33,138</td>
+                  <td class="py-3.5 px-3 text-slate-500">Credit Card (Razorpay)</td>
+                  <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-[10px]">PAID IN FULL</span></td>
+                  <td class="py-3.5 px-3 text-right space-x-2">
+                    <button class="btn-view-invoice text-blue-600 hover:underline font-bold" data-trip-id="TV-2026-742">Download PDF</button>
+                  </td>
+                </tr>
+
+                <!-- TV-2026-411 Full Paid -->
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                  <td class="py-3.5 px-3 font-bold text-blue-600">INV-2026-0610</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">TV-2026-411</td>
+                  <td class="py-3.5 px-3 text-slate-500">Aug 22, 2026</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹4,200</td>
+                  <td class="py-3.5 px-3 text-slate-500">UPI Payment</td>
+                  <td class="py-3.5 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold text-[10px]">PAID IN FULL</span></td>
+                  <td class="py-3.5 px-3 text-right space-x-2">
+                    <button class="btn-view-invoice text-blue-600 hover:underline font-bold" data-trip-id="TV-2026-411">Download PDF</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= TAB 5: SAVED TRAVELERS ================= -->
+      <div id="tab-travelers" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
+            <div>
+              <h2 class="text-2xl font-black text-slate-900 dark:text-white font-heading flex items-center gap-2.5">
+                <i class="fa-solid fa-users text-blue-600"></i>
+                <span>Saved Co-Travelers</span>
+              </h2>
+              <p class="text-xs text-slate-500 mt-1">Manage family, corporate colleagues, and group passengers for instant tourist permit auto-fills.</p>
+            </div>
+            <button onclick="openAddTravelerModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shadow-md shadow-blue-500/20 transition-all flex items-center gap-2 self-start sm:self-auto">
+              <i class="fa-solid fa-user-plus text-xs"></i>
+              <span>+ Add Traveler</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Travelers Grid -->
+          <div id="saved-travelers-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Populated dynamically by initSavedTravelers() in js/dashboard.js -->
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard & Fleet Control Center | TransVoyage</title>
+  <meta name="description" content="Central administrative console for fleet management, booking approvals, revenue analytics, driver allocations, and customer support.">
+
+  
+  <!-- Favicon / Website Brand Symbol -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+<!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN for Analytics Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-topography-pattern text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- ================= TOP ADMIN BAR ================= -->
+  <header class="sticky top-0 z-40 bg-slate-900 text-white px-4 sm:px-6 py-3 flex items-center justify-between border-b border-slate-800">
+    <div class="flex items-center gap-4">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-sm shadow group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-gauge-high"></i>
+        </div>
+        <span class="text-xl font-black font-heading tracking-tight uppercase">Trans<span class="text-amber-500">Voyage</span></span>
+      </a>
+      <span class="hidden sm:inline-block text-[11px] bg-amber-400/20 text-amber-300 font-bold px-2.5 py-0.5 rounded-full border border-amber-400/30">
+        Admin &amp; Dispatch Control
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <!-- Live Web Link -->
+      <a href="index.html" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition-colors">
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> View Public Site
+      </a>
+
+      <!-- RTL Toggle -->
+      <button class="rtl-toggle-btn px-2.5 py-1 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all" title="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle-btn w-8 h-8 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-400 flex items-center justify-center text-xs transition-all" title="Toggle Theme">
+        <i class="fa-solid fa-sun text-amber-400 theme-icon-light hidden"></i>
+        <i class="fa-solid fa-moon text-slate-300 theme-icon-dark"></i>
+      </button>
+
+      <!-- Admin Profile -->
+      <div class="flex items-center gap-2 pl-2 border-l border-slate-800">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Admin" class="w-8 h-8 rounded-full object-cover border border-amber-400">
+        <div class="hidden md:block text-left text-xs">
+          <p class="font-bold leading-tight">Sunil Nambiar</p>
+          <p class="text-[10px] text-slate-400">Chief Fleet Controller</p>
+        </div>
+      </div>
+
+      <a href="login.html" class="p-2 text-slate-400 hover:text-red-400 text-sm" title="Log Out">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= ADMIN DASHBOARD LAYOUT ================= -->
+  <div class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row gap-8">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-full lg:w-72 xl:w-80 space-y-4 shrink-0">
+      <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1">
+        
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left bg-blue-600 text-white shadow-md" data-target="admin-tab-analytics">
+          <i class="fa-solid fa-chart-line w-4 text-center"></i>
+          <span>Analytics & Revenue</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="admin-tab-orders">
+          <i class="fa-solid fa-box-archive w-4 text-center"></i>
+          <span>Bookings & Orders (28)</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="admin-tab-fleet">
+          <i class="fa-solid fa-bus w-4 text-center text-blue-500"></i>
+          <span>Fleet Radar (Live Active)</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="admin-tab-messages">
+          <i class="fa-solid fa-envelope w-4 text-center text-amber-500"></i>
+          <span>Customer Messages (14)</span>
+        </button>
+
+        <button class="dashboard-tab-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800" data-target="admin-tab-users">
+          <i class="fa-solid fa-users w-4 text-center"></i>
+          <span>Registered Users</span>
+        </button>
+      </div>
+
+      <!-- Quick Action Card -->
+      <div class="bg-slate-900 text-white p-5 rounded-2xl border border-slate-800 shadow-lg space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <h4 class="font-bold text-xs">Live Dispatch Alert</h4>
+        </div>
+        <p class="text-[11px] text-slate-300">All 28 active tourist coaches operating within normal highway speeds (&lt;80 km/h).</p>
+        <button onclick="if(window.showToast) showToast('Broadcasted highway speed check to all 28 drivers!', 'info')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-[11px] font-bold border border-slate-700">
+          <i class="fa-solid fa-bullhorn mr-1"></i> Send Fleet Broadcast
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Admin Workspace -->
+    <main class="flex-1 space-y-6">
+
+      <!-- Sample Operational Demo Data Notice Banner -->
+      <div class="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 flex items-start gap-3.5 text-xs text-amber-900 dark:text-amber-200">
+        <i class="fa-solid fa-triangle-exclamation text-amber-600 dark:text-amber-400 text-base mt-0.5 flex-shrink-0"></i>
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <strong class="font-bold text-sm">Sample Operational Demo Data (Frontend Dispatch Prototype)</strong>
+            <span class="px-2 py-0.2 rounded-full text-[10px] font-bold bg-amber-200 text-amber-900 dark:bg-amber-800 dark:text-amber-100 uppercase">Simulated Metrics</span>
+          </div>
+          <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+            The analytics, booking ledgers, revenue charts, and telematics telemetry presented below represent standardized sample benchmark demonstration data created to model real-world transport operations. Production deployment requires connecting to enterprise backend services (Node.js/Python/Java), PostgreSQL/MySQL databases, and live AIS-140 GPS telematics streams.
+          </p>
+        </div>
+      </div>
+
+      <!-- ================= TAB 1: ANALYTICS & OVERVIEW ================= -->
+      <div id="admin-tab-analytics" class="dashboard-tab-content space-y-6">
+        
+        <!-- Admin Command Center Banner (Unified Attractive Scenic Background) -->
+        <div class="bg-banner-admin-dashboard text-white p-6 sm:p-7 rounded-3xl border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          <div class="space-y-1 text-center sm:text-left relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>All Telematics Systems Operational</span>
+            </div>
+            <h1 class="page-hero-title text-white">TransVoyage Fleet Command Center</h1>
+            <p class="text-xs text-slate-200">Real-time GPS tracking across luxury coaches, tempo travellers, and executive minivans.</p>
+          </div>
+          <div class="relative z-10 flex items-center gap-3">
+            <button onclick="if(window.showToast) showToast('Generated daily fleet diagnostic report!', 'success')" class="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow-lg flex items-center gap-2 transition-transform hover:scale-105">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Export Telematics Log</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Metrics Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs text-slate-400 font-medium">Monthly Gross Revenue</span>
+            <p class="text-2xl font-black text-slate-900 dark:text-white font-heading mt-1">₹42.5 Lakhs</p>
+            <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-arrow-trend-up"></i> +18.4% vs last mo.</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs text-slate-400 font-medium">Active Trips on Road</span>
+            <p class="text-2xl font-black text-blue-600 font-heading mt-1">28 Coaches</p>
+            <span class="text-[10px] text-slate-500">Across 12 routes</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs text-slate-400 font-medium">Fleet Utilization</span>
+            <p class="text-2xl font-black text-emerald-600 font-heading mt-1">88.4%</p>
+            <span class="text-[10px] text-slate-500">132 / 150 In Service</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <span class="text-xs text-slate-400 font-medium">Pending RFPs / Inquiries</span>
+            <p class="text-2xl font-black text-amber-500 font-heading mt-1">14 New</p>
+            <span class="text-[10px] text-amber-600 font-bold">Needs response &lt;1h</span>
+          </div>
+        </div>
+
+        <!-- Charts Grid (Chart.js) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Line Chart: Revenue Trend -->
+          <div class="lg:col-span-8 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+              <div>
+                <h3 class="font-bold text-sm text-slate-900 dark:text-white font-heading">Monthly Revenue & Completed Trips (2026)</h3>
+                <p class="text-[11px] text-slate-400">Total volume logged across Tempo Travellers, Mini Buses & Volvo Coaches</p>
+              </div>
+              <span class="text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-1 rounded-full">Updated Live</span>
+            </div>
+            <div class="relative h-64">
+              <canvas id="admin-revenue-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Doughnut Chart: Fleet Distribution -->
+          <div class="lg:col-span-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <div class="pb-2 border-b border-slate-100 dark:border-slate-800">
+              <h3 class="font-bold text-sm text-slate-900 dark:text-white font-heading">Fleet Distribution by Type</h3>
+              <p class="text-[11px] text-slate-400">Share of total active charter fleet</p>
+            </div>
+            <div class="relative h-64">
+              <canvas id="admin-fleet-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= TAB 2: ORDERS & BOOKINGS ================= -->
+      <div id="admin-tab-orders" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">Booking & Dispatch Control</h2>
+              <p class="text-xs text-slate-500">Live trip tracking status, driver assignments, and tariff invoicing.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="if(window.showToast) showToast('Bookings export CSV generated!', 'success')" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <i class="fa-solid fa-file-csv mr-1"></i> Export CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-bold uppercase">
+                <tr>
+                  <th class="py-3 px-3">Trip Ref</th>
+                  <th class="py-3 px-3">Customer</th>
+                  <th class="py-3 px-3">Fleet Model</th>
+                  <th class="py-3 px-3">Route / Dates</th>
+                  <th class="py-3 px-3">Fare</th>
+                  <th class="py-3 px-3">Status Management</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-medium">
+                
+                <tr>
+                  <td class="py-3.5 px-3 font-bold text-blue-600">TV-2026-981</td>
+                  <td class="py-3.5 px-3">
+                    <p class="font-bold text-slate-900 dark:text-white">Sarah Jenkins</p>
+                    <p class="text-[10px] text-slate-400">+91 98765 43210</p>
+                  </td>
+                  <td class="py-3.5 px-3">17-Seater Force Urbania</td>
+                  <td class="py-3.5 px-3">BLR ➔ Coorg (Nov 07-10)</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹16,400</td>
+                  <td class="py-3.5 px-3">
+                    <select class="admin-status-select px-2.5 py-1 rounded bg-emerald-100 text-emerald-800 font-bold text-[11px] outline-none">
+                      <option value="confirmed" selected>Confirmed</option>
+                      <option value="in-transit">In Transit</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </td>
+                  <td class="py-3.5 px-3 text-right">
+                    <button class="btn-track-trip text-blue-600 font-bold hover:underline" data-trip-id="TV-2026-981">Track</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="py-3.5 px-3 font-bold text-blue-600">TV-2026-982</td>
+                  <td class="py-3.5 px-3">
+                    <p class="font-bold text-slate-900 dark:text-white">Infosys Tech Delegation</p>
+                    <p class="text-[10px] text-slate-400">Pooja Deshmukh</p>
+                  </td>
+                  <td class="py-3.5 px-3">45-Seater Luxury AC Coach</td>
+                  <td class="py-3.5 px-3">Airport ➔ ITC Gardenia (Nov 08)</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹14,500</td>
+                  <td class="py-3.5 px-3">
+                    <select class="admin-status-select px-2.5 py-1 rounded bg-blue-100 text-blue-800 font-bold text-[11px] outline-none">
+                      <option value="confirmed">Confirmed</option>
+                      <option value="in-transit" selected>In Transit</option>
+                      <option value="completed">Completed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </td>
+                  <td class="py-3.5 px-3 text-right">
+                    <button class="btn-track-trip text-blue-600 font-bold hover:underline" data-trip-id="TV-2026-982">Track</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="py-3.5 px-3 font-bold text-blue-600">TV-2026-983</td>
+                  <td class="py-3.5 px-3">
+                    <p class="font-bold text-slate-900 dark:text-white">Dr. Amitava Roy</p>
+                    <p class="text-[10px] text-slate-400">Wedding Party</p>
+                  </td>
+                  <td class="py-3.5 px-3">20-Seater Maharaja Van</td>
+                  <td class="py-3.5 px-3">Jaipur ➔ Udaipur (Nov 11-15)</td>
+                  <td class="py-3.5 px-3 font-bold text-slate-900 dark:text-white">₹28,500</td>
+                  <td class="py-3.5 px-3">
+                    <select class="admin-status-select px-2.5 py-1 rounded bg-amber-100 text-amber-800 font-bold text-[11px] outline-none">
+                      <option value="pending" selected>Pending Driver Allocation</option>
+                      <option value="confirmed">Confirmed</option>
+                      <option value="in-transit">In Transit</option>
+                      <option value="completed">Completed</option>
+                    </select>
+                  </td>
+                  <td class="py-3.5 px-3 text-right">
+                    <button onclick="if(window.showToast) showToast('Driver assigned successfully!', 'success')" class="text-emerald-600 font-bold hover:underline">Assign Driver</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: FLEET RADAR ================= -->
+      <div id="admin-tab-fleet" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">Vehicle Fleet Operational Status</h2>
+            <button onclick="if(window.showToast) showToast('New vehicle registration form opened!', 'info')" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold">
+              + Add Vehicle to Fleet
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-900 dark:text-white">KA-01-MJ-9921</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">ON ROAD</span>
+              </div>
+              <p class="text-xs text-slate-500">17-Seater Force Urbania • Chauffeur: Rajesh Kumar</p>
+              <p class="text-[10px] text-slate-400">Next Fitness Audit: Dec 2026 • Speed: 62 km/h</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-900 dark:text-white">KA-05-AA-4011</span>
+                <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">AVAILABLE</span>
+              </div>
+              <p class="text-xs text-slate-500">53-Seater Volvo 9600 • Stationed at Bangalore Depot 4</p>
+              <p class="text-[10px] text-slate-400">Cleaned & Ready • Fuel Tank: 100%</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-900 dark:text-white">MH-02-CB-1192</span>
+                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">MAINTENANCE</span>
+              </div>
+              <p class="text-xs text-slate-500">26-Seater Mini Coach • Scheduled 40,000km Engine Service</p>
+              <p class="text-[10px] text-slate-400">Available: Tomorrow 10:00 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 4: MESSAGES & RFPS ================= -->
+      <div id="admin-tab-messages" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">Customer Inquiries & Custom RFPs</h2>
+          <p class="text-xs text-slate-500">Respond directly via Email and SMS from the central console.</p>
+
+          <div class="space-y-3">
+            <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">Alok Sengupta</span>
+                  <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">Wedding Shuttle</span>
+                  <span class="text-[10px] text-slate-400">15 mins ago</span>
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300">
+                  "Require two 26-seater AC mini coaches for a 3-day wedding in Jaipur from Dec 14 to Dec 17. Need quote including interstate toll and driver night stay."
+                </p>
+              </div>
+              <button class="btn-admin-reply px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold whitespace-nowrap shadow" data-customer="Alok Sengupta">
+                <i class="fa-solid fa-reply mr-1"></i> Send Reply
+              </button>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="font-bold text-sm text-slate-900 dark:text-white">TechVision Software Ltd</span>
+                  <span class="text-[10px] bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-bold">Annual Retreat</span>
+                  <span class="text-[10px] text-slate-400">1 hour ago</span>
+                </div>
+                <p class="text-xs text-slate-600 dark:text-slate-300">
+                  "Need 3 Volvo 53-seater multi-axle coaches for our 150-engineer offsite to Chikmagalur. Please provide GST quote with Wi-Fi on all buses."
+                </p>
+              </div>
+              <button class="btn-admin-reply px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold whitespace-nowrap shadow" data-customer="TechVision Software Ltd">
+                <i class="fa-solid fa-reply mr-1"></i> Send Reply
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 5: REGISTERED USERS ================= -->
+      <div id="admin-tab-users" class="dashboard-tab-content hidden space-y-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+          <h2 class="text-xl font-black text-slate-900 dark:text-white font-heading">User Management</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left min-w-[500px]">
+            <thead class="bg-slate-50 dark:bg-slate-800 text-slate-500 font-bold uppercase">
+              <tr>
+                <th class="py-3 px-3">User</th>
+                <th class="py-3 px-3">Role</th>
+                <th class="py-3 px-3">Trips Taken</th>
+                <th class="py-3 px-3">Total Spent</th>
+                <th class="py-3 px-3">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+              <tr>
+                <td class="py-3 px-3 font-bold">Sarah Jenkins</td>
+                <td class="py-3 px-3"><span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px]">Customer</span></td>
+                <td class="py-3 px-3">8 Trips</td>
+                <td class="py-3 px-3 font-bold">₹84,200</td>
+                <td class="py-3 px-3"><span class="text-emerald-600 font-bold">Active</span></td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-bold">Rajesh Kumar</td>
+                <td class="py-3 px-3"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Driver Partner</span></td>
+                <td class="py-3 px-3">420 Trips</td>
+                <td class="py-3 px-3">4.9 ★ Rating</td>
+                <td class="py-3 px-3"><span class="text-emerald-600 font-bold">On Trip</span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

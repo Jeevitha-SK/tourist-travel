@@ -1,0 +1,634 @@
+/* Custom Styles for TransVoyage - Tourist Bus & Traveller Rental */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Outfit', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Grotesk', 'Segoe UI Mono', monospace;
+
+  /* Unified Brand Design Tokens */
+  --brand-blue: #2563eb;
+  --brand-blue-hover: #1d4ed8;
+  --brand-dark-blue: #1e3a8a;
+  --brand-amber: #f59e0b;
+  --brand-amber-hover: #d97706;
+
+  /* Surface Tokens */
+  --bg-canvas-light: #f8fafc;
+  --bg-card-light: #ffffff;
+  --border-light: #e2e8f0;
+
+  --bg-canvas-dark: #090d16;
+  --bg-card-dark: #0f172a;
+  --border-dark: #1e293b;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+/* Ensure hero booking sections scroll cleanly below the sticky navbar without clipping titles */
+#booking-calculator-sec,
+#corporate-rfp,
+.hero-booking-section {
+  scroll-margin-top: 85px !important;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-canvas-light);
+  color: #1e293b;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.dark body, body.dark {
+  background-color: var(--bg-canvas-dark);
+  color: #f1f5f9;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+/* Ensure font-black uses clean modern weight rather than bloated Arial Black */
+.font-black {
+  font-weight: 800 !important;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.font-tech {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* ==========================================
+   UNIFIED BACKGROUNDS & SCENIC HEROES
+   ========================================== */
+
+/* ==========================================
+   UNIFIED COMMON TITLE TYPOGRAPHY
+   ========================================== */
+.page-hero-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.18 !important;
+  font-size: 1.875rem !important; /* 30px mobile */
+}
+@media (min-width: 640px) {
+  .page-hero-title {
+    font-size: 2.25rem !important; /* 36px tablet */
+  }
+}
+@media (min-width: 1024px) {
+  .page-hero-title {
+    font-size: 2.75rem !important; /* 44px desktop - identical across every page */
+  }
+}
+
+/* ==========================================
+   UNIFIED INTERIOR PAGE TITLE BANNER CARD
+   (Guarantees 100% identical size on all pages)
+   ========================================== */
+.page-title-banner {
+  min-height: 320px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 2rem 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+@media (min-width: 640px) {
+  .page-title-banner {
+    min-height: 380px !important;
+    padding: 2.5rem 0 !important;
+  }
+}
+@media (min-width: 1024px) {
+  .page-title-banner {
+    min-height: 420px !important;
+    padding: 3rem 0 !important;
+  }
+}
+
+/* Right-side Thematic Visual Showcase Card for Interior Pages */
+.banner-hero-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.75);
+}
+@media (min-width: 640px) {
+  .banner-hero-img-wrap {
+    height: 290px;
+  }
+}
+@media (min-width: 1024px) {
+  .banner-hero-img-wrap {
+    height: 330px;
+  }
+}
+.banner-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.banner-hero-img-wrap:hover .banner-hero-img {
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   UNIVERSAL STANDARDIZED CARD IMAGE SIZE
+   (Guarantees identical height across Fleet, Services, etc.)
+   ========================================== */
+.card-img-container {
+  height: 210px !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+.card-img-standard {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  transition: transform 0.5s ease !important;
+}
+.group:hover .card-img-standard {
+  transform: scale(1.05) !important;
+}
+
+/* ==========================================
+   PAGE-SPECIFIC UNIQUE SCENIC BACKGROUNDS
+   (Unique, non-repeating verified photos)
+   ========================================== */
+
+/* 1. Main Landing: Premier Volvo Coach on Highway */
+.bg-hero-stage,
+.bg-hero-home {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 2. Corporate Portal: Executive Force Urbania / Sprinter VIP Van */
+.bg-hero-corporate {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 3. Fleet Catalog: Deluxe 45-53 Seater Tourist Buses Lineup */
+.bg-banner-fleet {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 4. Pricing / Tariffs: Highway Expressway Night Speed Trails */
+.bg-banner-pricing {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1415296899237-424b0513d567?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 5. Services: Mercedes-Benz Minibus on Coastal / Highway Tour */
+.bg-banner-services {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1783809682893-f13d33ae621e?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 6. Service Details: Panoramic Mountain Valley Highway Tour */
+.bg-banner-service-details {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 7. About Us: Heritage Cultural Circuit Tourist Bus Fleet */
+.bg-banner-about {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 8. Blog: Executive Mercedes Van Road Trip */
+.bg-banner-blog {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1624041627062-737663f6848d?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 32% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 9. Blog Details: Luxury Coach Interior Cabin with Recliner Pushback Seats */
+.bg-banner-blog-details {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1663077562377-925ad8130a11?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 10. Contact Us: Modern Tour Bus with Open Boarding Doors */
+.bg-banner-contact {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 11. Customer Dashboard: Central Highway Telematics & GPS Corridors */
+.bg-banner-customer-dashboard {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 20%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 80%, rgba(245, 158, 11, 0.24) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.78) 0%, rgba(11, 17, 32, 0.70) 50%, rgba(7, 13, 30, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 12. Admin Dashboard: Illuminated Highway Expressway Command */
+.bg-banner-admin-dashboard {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 20%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 80%, rgba(245, 158, 11, 0.24) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.78) 0%, rgba(11, 17, 32, 0.70) 50%, rgba(7, 13, 30, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 13. Login: Night Luxury Mercedes Van with Illuminated Headlights */
+.bg-screen-login {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1765461734605-34657fa04db2?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 14. 404 Detour: Winding Mountain Road Under Ambient Night Sky */
+.bg-screen-404 {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1500073584060-670c36a703f1?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* 15. Coming Soon: Next-Gen Sleek Silver Aerodynamic Coach */
+.bg-screen-coming-soon {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1759882608768-168d4c3a91c2?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* Secondary Bottom Scenic Callouts */
+.bg-scenic-mountains {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 80% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1531804055935-76f44d7c3621?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 40% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+.bg-scenic-sunset {
+  position: relative;
+  background-color: #0b1120 !important;
+  background-image: 
+    radial-gradient(ellipse at 75% 25%, rgba(245, 158, 11, 0.35) 0%, transparent 60%),
+    radial-gradient(ellipse at 25% 75%, rgba(37, 99, 235, 0.32) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(11, 17, 32, 0.78) 0%, rgba(15, 23, 42, 0.68) 50%, rgba(7, 13, 30, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* Fallback Generic Page Banner */
+.bg-page-banner {
+  position: relative;
+  background-color: #070d1e !important;
+  background-image: 
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(245, 158, 11, 0.25) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(11, 17, 32, 0.82) 45%, rgba(7, 13, 30, 0.94) 100%),
+    url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=85') !important;
+  background-size: cover !important;
+  background-position: center 32% !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+}
+
+/* Subtle Topography Canvas Pattern */
+.bg-topography-pattern {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(245, 158, 11, 0.04) 0px, transparent 50%),
+    radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
+}
+.dark .bg-topography-pattern, body.dark .bg-topography-pattern {
+  background-color: #090d16;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(217, 119, 6, 0.08) 0px, transparent 50%),
+    radial-gradient(rgba(51, 65, 85, 0.25) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 24px 24px;
+}
+
+/* ==========================================
+   UNIFIED CARD & GLASS ARCHITECTURE
+   ========================================== */
+.card-unified {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .card-unified, body.dark .card-unified {
+  background-color: #0f172a;
+  border-color: #1e293b;
+}
+.card-unified:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.12);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+.dark .card-unified:hover, body.dark .card-unified:hover {
+  box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.5);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Bento Card Style */
+.bento-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .bento-card, body.dark .bento-card {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.bento-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+/* Glass Card Hero (Fare Calculator & RFP Form) */
+.glass-card-hero {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+}
+.dark .glass-card-hero, body.dark .glass-card-hero {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================
+   INTERACTIVE CABIN SEATING VISUALIZER
+   ========================================== */
+.seat-item {
+  width: 36px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.seat-item.available {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+  border: 1.5px solid rgba(37, 99, 235, 0.35);
+}
+.seat-item.available:hover {
+  background: #2563eb;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+.seat-item.selected {
+  background: #10b981;
+  color: #ffffff;
+  border: 1.5px solid #059669;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+.seat-item.driver {
+  background: #f59e0b;
+  color: #ffffff;
+  border: 1.5px solid #d97706;
+}
+
+/* Speed Gauge Needle Animation */
+@keyframes gaugeSpin {
+  0% { transform: rotate(-45deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(-45deg); }
+}
+.gauge-needle {
+  transform-origin: bottom center;
+  animation: gaugeSpin 4s ease-in-out infinite;
+}
+
+/* RTL Support Tweaks */
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Print Invoice Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-invoice, #printable-invoice * {
+    visibility: visible;
+  }
+  #printable-invoice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

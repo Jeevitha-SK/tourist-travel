@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Account | TransVoyage Tourist Bus &amp; Traveller Rental</title>
+  <meta name="description" content="Register for a TransVoyage account. Enjoy ₹1,500 welcome booking credit, live GPS fleet radar, automated GST invoicing, and corporate charter management.">
+
+  
+  <!-- Favicon / Website Brand Symbol -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+<!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-screen-login min-h-screen flex flex-col justify-between text-slate-900 dark:text-white antialiased relative transition-colors duration-200">
+
+  <!-- Top Navigation Header -->
+  <header class="py-4 px-6 border-b border-white/10 bg-slate-950/80 backdrop-blur-md flex items-center justify-between relative z-20">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-bus"></i>
+      </div>
+      <span class="text-2xl font-black text-white font-heading uppercase">Trans<span class="text-amber-500">Voyage</span></span>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <button class="rtl-toggle-btn px-2.5 py-1 rounded-lg border border-white/15 bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-bold transition-all" title="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span>
+      </button>
+
+      <button class="theme-toggle-btn w-8 h-8 rounded-lg border border-white/15 bg-white/10 hover:bg-white/20 text-slate-200 hover:text-amber-400 flex items-center justify-center text-xs transition-all" title="Toggle Theme">
+        <i class="fa-solid fa-sun text-amber-400 theme-icon-light hidden"></i>
+        <i class="fa-solid fa-moon text-slate-200 theme-icon-dark"></i>
+      </button>
+
+      <a href="login.html" class="px-3.5 py-1.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-right-to-bracket text-amber-400"></i>
+        <span>Sign In</span>
+      </a>
+
+      <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white hidden sm:flex items-center gap-1">
+        <i class="fa-solid fa-house text-[11px]"></i> Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Registration Card Section (Centered, Streamlined Form) -->
+  <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center">
+    <div class="max-w-xl w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-6">
+      
+      <!-- Brand & Title -->
+      <div class="text-center space-y-1">
+        <h1 class="page-hero-title text-slate-900 dark:text-white">Create New Account</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Join 45,000+ satisfied travelers and enjoy instant booking discounts.</p>
+      </div>
+
+      <!-- Auth Mode Tabs (Sign In / Register) -->
+      <div class="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-bold text-center">
+        <a id="tab-login" href="login.html" class="py-2 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-white transition-all flex items-center justify-center">
+          Sign In
+        </a>
+        <a id="tab-register" href="register.html" class="py-2 rounded-lg bg-white dark:bg-slate-900 text-blue-600 dark:text-white shadow-sm transition-all flex items-center justify-center">
+          Create Account
+        </a>
+      </div>
+
+      <!-- Success Feedback Banner (Hidden by default) -->
+      <div id="register-status-banner" class="hidden p-4 rounded-2xl border text-xs flex items-start gap-3 transition-all"></div>
+
+      <!-- Account Profile Selector (Individual vs Corporate vs Tour Operator) -->
+      <div>
+        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
+          Select Your Account Category:
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="profile-type-container">
+          <!-- Type 1: Individual -->
+          <button type="button" onclick="selectAccountType('individual')" id="type-btn-individual" class="p-3 rounded-xl border-2 border-blue-600 bg-blue-50/70 dark:bg-blue-900/30 text-left transition-all flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-1">
+              <i class="fa-solid fa-user-group text-blue-600 dark:text-blue-400 text-sm"></i>
+              <span id="check-individual" class="w-4 h-4 rounded-full bg-blue-600 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-check"></i></span>
+            </div>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">Tourist &amp; Family</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Vacations &amp; Weddings</span>
+          </button>
+
+          <!-- Type 2: Corporate -->
+          <button type="button" onclick="selectAccountType('corporate')" id="type-btn-corporate" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:border-blue-400 text-left transition-all flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-1">
+              <i class="fa-solid fa-building text-slate-500 dark:text-slate-400 text-sm"></i>
+              <span id="check-corporate" class="w-4 h-4 rounded-full bg-blue-600 text-white hidden items-center justify-center text-[9px]"><i class="fa-solid fa-check"></i></span>
+            </div>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">Corporate B2B</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Employee Shuttles &amp; MICE</span>
+          </button>
+
+          <!-- Type 3: Travel Agency -->
+          <button type="button" onclick="selectAccountType('agency')" id="type-btn-agency" class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:border-blue-400 text-left transition-all flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-1">
+              <i class="fa-solid fa-map-location-dot text-slate-500 dark:text-slate-400 text-sm"></i>
+              <span id="check-agency" class="w-4 h-4 rounded-full bg-blue-600 text-white hidden items-center justify-center text-[9px]"><i class="fa-solid fa-check"></i></span>
+            </div>
+            <span class="text-xs font-bold text-slate-900 dark:text-white">Tour Operator</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Wholesale Fleet Rates</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="dedicated-register-form" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
+        
+        <!-- Name & Email (2 Cols) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1" id="label-name">Full Name *</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"><i class="fa-solid fa-user"></i></span>
+              <input type="text" id="reg-fullname" required placeholder="e.g. Sarah Jenkins" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Official / Personal Email *</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"><i class="fa-solid fa-envelope"></i></span>
+              <input type="email" id="reg-email" required placeholder="name@domain.com" class="w-full pl-9 pr-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone Number & Hub City (2 Cols) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Mobile Phone *</label>
+            <div class="relative flex">
+              <span class="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold shrink-0">
+                +91
+              </span>
+              <input type="tel" id="reg-phone" required placeholder="98765 43210" pattern="[0-9]{10}" class="w-full px-3.5 py-2.5 rounded-r-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+              <button type="button" onclick="sendMobileOTP()" id="btn-otp-trigger" class="absolute right-1.5 top-1/2 -translate-y-1/2 px-2 py-1 bg-blue-100 dark:bg-blue-900/60 hover:bg-blue-200 dark:hover:bg-blue-800 text-blue-700 dark:text-blue-300 rounded-lg text-[10px] font-bold transition-colors">
+                Verify OTP
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Primary Departure City / Hub *</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"><i class="fa-solid fa-location-dot"></i></span>
+              <select id="reg-city" required class="w-full pl-9 pr-8 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-slate-800 dark:text-slate-200">
+                <option value="" disabled selected>Select Primary Hub</option>
+                <option value="bangalore">Bangalore (South Hub &amp; HQ)</option>
+                <option value="mumbai">Mumbai / Navi Mumbai</option>
+                <option value="delhi">Delhi NCR / Gurgaon / Noida</option>
+                <option value="chennai">Chennai &amp; ECR</option>
+                <option value="hyderabad">Hyderabad (HITEC City)</option>
+                <option value="pune">Pune &amp; Hinjewadi</option>
+                <option value="jaipur">Jaipur (Rajasthan Heritage)</option>
+                <option value="goa">Goa (Panaji &amp; Coastal)</option>
+                <option value="coimbatore">Coimbatore &amp; Ooty</option>
+                <option value="kolkata">Kolkata &amp; East Hub</option>
+              </select>
+              <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"><i class="fa-solid fa-chevron-down text-[10px]"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic B2B Corporate Fields (Hidden on Individual, Visible on Corporate/Agency) -->
+        <div id="corporate-fields" class="hidden p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3">
+          <div class="flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400">
+            <i class="fa-solid fa-briefcase"></i> Enterprise Billing &amp; Tax Information
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-600 dark:text-slate-300 mb-1">Company / Organization Name *</label>
+              <input type="text" id="reg-company" placeholder="e.g. Apex Global Logistics Pvt Ltd" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-600 dark:text-slate-300 mb-1">GSTIN Number (For Input Tax Credit)</label>
+              <input type="text" id="reg-gstin" placeholder="29AAAAA0000A1Z5" maxlength="15" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs uppercase outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Vehicle Interest (Multi-chip picker) -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Preferred Fleet Type(s) for Your Travel Needs:
+          </label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <label class="cursor-pointer p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:border-blue-400">
+              <input type="checkbox" name="fleet_pref" value="urbania" checked class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+              <span class="text-[11px] font-medium leading-tight">Force Urbania (9-17S)</span>
+            </label>
+
+            <label class="cursor-pointer p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:border-blue-400">
+              <input type="checkbox" name="fleet_pref" value="tempo" checked class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+              <span class="text-[11px] font-medium leading-tight">Tempo Traveller (12-26S)</span>
+            </label>
+
+            <label class="cursor-pointer p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:border-blue-400">
+              <input type="checkbox" name="fleet_pref" value="bharatbenz" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+              <span class="text-[11px] font-medium leading-tight">BharatBenz (32-40S)</span>
+            </label>
+
+            <label class="cursor-pointer p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:border-blue-400">
+              <input type="checkbox" name="fleet_pref" value="volvo" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+              <span class="text-[11px] font-medium leading-tight">Volvo 9600 (45-55S)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Password & Confirm Password (2 Cols) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Create Password *</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="reg-password" required placeholder="Minimum 8 characters" minlength="6" oninput="checkPasswordStrength()" class="w-full pl-9 pr-9 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+              <button type="button" onclick="toggleRegPassword('reg-password', 'pwd-toggle-1')" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs hover:text-slate-600">
+                <i class="fa-solid fa-eye" id="pwd-toggle-1"></i>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Confirm Password *</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"><i class="fa-solid fa-shield-halved"></i></span>
+              <input type="password" id="reg-confirm-password" required placeholder="Re-enter password" minlength="6" class="w-full pl-9 pr-9 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+              <button type="button" onclick="toggleRegPassword('reg-confirm-password', 'pwd-toggle-2')" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs hover:text-slate-600">
+                <i class="fa-solid fa-eye" id="pwd-toggle-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password strength meter bar -->
+        <div class="space-y-1">
+          <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+            <div id="pwd-strength-bar" class="h-full w-0 bg-rose-500 transition-all duration-300"></div>
+          </div>
+          <p id="pwd-strength-text" class="text-[10px] text-slate-400">Password strength: Enter at least 8 characters</p>
+        </div>
+
+        <!-- Checkboxes for terms & notifications -->
+        <div class="space-y-2 pt-1 text-xs">
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" checked id="chk-whatsapp" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500 mt-0.5">
+            <span class="text-slate-600 dark:text-slate-300 text-[11px] leading-tight">
+              Send booking confirmations, live GPS tracking links, and driver contacts directly to my WhatsApp number.
+            </span>
+          </label>
+
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" required id="chk-terms" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500 mt-0.5">
+            <span class="text-slate-600 dark:text-slate-300 text-[11px] leading-tight">
+              I agree to TransVoyage's <a href="terms.html" target="_blank" class="text-blue-600 dark:text-blue-400 underline font-semibold">Terms of Carriage</a>, <a href="privacy-policy.html" target="_blank" class="text-blue-600 dark:text-blue-400 underline font-semibold">Privacy Policy</a>, and highway passenger safety protocols.
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="btn-register-submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 text-xs transition-all flex items-center justify-center gap-2">
+          <span>Create Account &amp; Proceed to Sign In</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Or Continue With Social Login -->
+      <div class="relative flex py-1 items-center">
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+        <span class="flex-shrink mx-4 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Or Sign Up With</span>
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button type="button" onclick="handleSocialRegister('Google')" class="py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
+          <i class="fa-brands fa-google text-rose-500"></i> Google Account
+        </button>
+        <button type="button" onclick="handleSocialRegister('Mobile OTP')" class="py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
+          <i class="fa-solid fa-mobile-screen text-blue-500"></i> Instant Phone OTP
+        </button>
+      </div>
+
+      <!-- Footer Callout: Link to Sign In -->
+      <p class="text-center text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-800">
+        Already registered with TransVoyage? 
+        <a href="login.html" class="text-blue-600 dark:text-blue-400 font-bold hover:underline ml-1">
+          Sign In here <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- Clean Footer -->
+  <footer class="py-4 text-center text-xs text-slate-400 relative z-10 border-t border-white/5 bg-slate-950/40">
+    &copy; 2026 TransVoyage Tourist Bus &amp; Traveller Rentals. All rights reserved. &bull; <a href="terms.html" class="underline hover:text-white">Terms</a> &bull; <a href="privacy-policy.html" class="underline hover:text-white">Privacy</a>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    let activeAccountType = 'individual';
+
+    function selectAccountType(type) {
+      activeAccountType = type;
+      const types = ['individual', 'corporate', 'agency'];
+
+      types.forEach(t => {
+        const btn = document.getElementById(`type-btn-${t}`);
+        const check = document.getElementById(`check-${t}`);
+        if (t === type) {
+          btn.className = 'p-3 rounded-xl border-2 border-blue-600 bg-blue-50/70 dark:bg-blue-900/30 text-left transition-all flex flex-col justify-between';
+          if (check) {
+            check.classList.remove('hidden');
+            check.classList.add('flex');
+          }
+        } else {
+          btn.className = 'p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 hover:border-blue-400 text-left transition-all flex flex-col justify-between';
+          if (check) {
+            check.classList.add('hidden');
+            check.classList.remove('flex');
+          }
+        }
+      });
+
+      const corpFields = document.getElementById('corporate-fields');
+      const labelName = document.getElementById('label-name');
+
+      if (type === 'corporate') {
+        corpFields.classList.remove('hidden');
+        labelName.textContent = 'Corporate Contact Person *';
+      } else if (type === 'agency') {
+        corpFields.classList.remove('hidden');
+        labelName.textContent = 'Agency Representative Name *';
+      } else {
+        corpFields.classList.add('hidden');
+        labelName.textContent = 'Full Name *';
+      }
+    }
+
+    function toggleRegPassword(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function checkPasswordStrength() {
+      const val = document.getElementById('reg-password').value;
+      const bar = document.getElementById('pwd-strength-bar');
+      const text = document.getElementById('pwd-strength-text');
+
+      if (!val) {
+        bar.style.width = '0%';
+        text.textContent = 'Password strength: Enter at least 8 characters';
+        text.className = 'text-[10px] text-slate-400';
+        return;
+      }
+
+      let strength = 0;
+      if (val.length >= 6) strength += 25;
+      if (val.length >= 8) strength += 25;
+      if (/[A-Z]/.test(val) && /[0-9]/.test(val)) strength += 25;
+      if (/[^A-Za-z0-9]/.test(val)) strength += 25;
+
+      bar.style.width = strength + '%';
+
+      if (strength <= 25) {
+        bar.className = 'h-full bg-rose-500 transition-all duration-300';
+        text.textContent = 'Weak: Add uppercase, number & symbol';
+        text.className = 'text-[10px] text-rose-500 font-semibold';
+      } else if (strength <= 50) {
+        bar.className = 'h-full bg-amber-500 transition-all duration-300';
+        text.textContent = 'Moderate: Add special characters';
+        text.className = 'text-[10px] text-amber-500 font-semibold';
+      } else if (strength <= 75) {
+        bar.className = 'h-full bg-blue-500 transition-all duration-300';
+        text.textContent = 'Strong password';
+        text.className = 'text-[10px] text-blue-500 font-semibold';
+      } else {
+        bar.className = 'h-full bg-emerald-500 transition-all duration-300';
+        text.textContent = 'Very strong password!';
+        text.className = 'text-[10px] text-emerald-500 font-semibold';
+      }
+    }
+
+    function sendMobileOTP() {
+      const phone = document.getElementById('reg-phone').value.trim();
+      if (!phone || phone.length < 10) {
+        if (window.showToast) {
+          showToast('Please enter a valid 10-digit mobile number first.', 'warning');
+        } else {
+          alert('Please enter a valid 10-digit mobile number first.');
+        }
+        return;
+      }
+
+      const btn = document.getElementById('btn-otp-trigger');
+      btn.textContent = 'OTP Sent ✓';
+      btn.className = 'absolute right-1.5 top-1/2 -translate-y-1/2 px-2 py-1 bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 rounded-lg text-[10px] font-bold';
+
+      if (window.showToast) {
+        showToast(`6-digit OTP code sent to +91 ${phone} via SMS and WhatsApp!`, 'success');
+      }
+    }
+
+    function handleRegistrationSubmit(e) {
+      e.preventDefault();
+
+      const pwd = document.getElementById('reg-password').value;
+      const confirmPwd = document.getElementById('reg-confirm-password').value;
+      const name = document.getElementById('reg-fullname').value.trim();
+
+      if (pwd !== confirmPwd) {
+        if (window.showToast) {
+          showToast('Passwords do not match. Please verify.', 'error');
+        } else {
+          alert('Passwords do not match. Please verify.');
+        }
+        return;
+      }
+
+      // Display Status Banner
+      const banner = document.getElementById('register-status-banner');
+      banner.className = 'p-4 rounded-2xl border bg-emerald-50 text-emerald-900 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-200 dark:border-emerald-800 text-xs flex items-start gap-3 transition-all';
+      banner.innerHTML = `
+        <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+          <i class="fa-solid fa-circle-check text-base"></i>
+        </div>
+        <div class="space-y-1 flex-1">
+          <p class="font-bold text-sm text-emerald-950 dark:text-emerald-100">Account Created Successfully, ${name}!</p>
+          <p class="text-[11px] leading-relaxed text-emerald-800 dark:text-emerald-300">
+            Your TransVoyage registration is complete. Redirecting you to the <strong>Sign In</strong> page...
+          </p>
+        </div>
+      `;
+      banner.classList.remove('hidden');
+
+      if (window.showToast) {
+        showToast('Account created successfully! Redirecting to Sign In...', 'success');
+      }
+
+      // Automatically redirect to Sign In (login.html)
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1400);
+    }
+
+    function handleSocialRegister(provider) {
+      if (window.showToast) {
+        showToast(`${provider} verified! Redirecting to Sign In...`, 'success');
+      }
+      const banner = document.getElementById('register-status-banner');
+      banner.className = 'p-3.5 rounded-2xl border bg-emerald-50 text-emerald-900 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-200 dark:border-emerald-800 text-xs flex items-center gap-2.5 transition-all';
+      banner.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i> <span>Connected via ${provider}. Redirecting to Sign In page...</span>`;
+      banner.classList.remove('hidden');
+
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

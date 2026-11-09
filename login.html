@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Registration Portal | TransVoyage Tourist Bus Rental</title>
+  <meta name="description" content="Sign in to your TransVoyage account to manage tourist bus bookings, track live trips, and access corporate tax invoices.">
+
+  
+  <!-- Favicon / Website Brand Symbol -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+<!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-screen-login min-h-screen flex flex-col justify-between text-white antialiased relative transition-colors duration-200">
+  <!-- Top bar -->
+  <header class="py-4 px-6 border-b border-white/10 bg-slate-950/70 backdrop-blur-md flex items-center justify-between relative z-10">
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-bus"></i>
+      </div>
+      <span class="text-2xl font-black text-white font-heading uppercase">Trans<span class="text-amber-500">Voyage</span></span>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <button class="rtl-toggle-btn px-2.5 py-1 rounded-lg border border-white/15 bg-white/10 hover:bg-white/20 text-slate-200 text-xs font-bold transition-all" title="Toggle RTL/LTR">
+        <span class="rtl-label">RTL</span>
+      </button>
+
+      <button class="theme-toggle-btn w-8 h-8 rounded-lg border border-white/15 bg-white/10 hover:bg-white/20 text-slate-200 hover:text-amber-400 flex items-center justify-center text-xs transition-all" title="Toggle Theme">
+        <i class="fa-solid fa-sun text-amber-400 theme-icon-light hidden"></i>
+        <i class="fa-solid fa-moon text-slate-200 theme-icon-dark"></i>
+      </button>
+
+      <a href="index.html" class="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Login / Register Card Section -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 relative z-10">
+    <div class="max-w-md w-full glass-card-hero text-slate-900 dark:text-white rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+      
+      <!-- Brand & Title -->
+      <div class="text-center space-y-1">
+        <h1 class="page-hero-title text-slate-900 dark:text-white" id="auth-title">Welcome to TransVoyage</h1>
+        <p class="text-xs text-slate-500" id="auth-subtitle">Access your bookings, live tracking radar, and tax invoices.</p>
+      </div>
+
+
+      <!-- Auth Mode Tabs (Sign In / Register) -->
+      <div class="grid grid-cols-2 gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-bold text-center">
+        <a id="tab-login" href="login.html" class="py-2 rounded-lg bg-white dark:bg-slate-900 text-blue-600 dark:text-white shadow-sm transition-all flex items-center justify-center">
+          Sign In
+        </a>
+        <a id="tab-register" href="register.html" class="py-2 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-white transition-all flex items-center justify-center">
+          Create Account
+        </a>
+      </div>
+
+      <!-- Form -->
+      <!-- Success / Status Feedback Alert (hidden initially) -->
+      <div id="auth-status-banner" class="hidden p-3 rounded-xl text-xs font-semibold flex items-center gap-2 border"></div>
+
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        
+        <!-- Registration Full Name Field (Hidden on Login) -->
+        <div id="reg-name-field" class="hidden">
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+          <input type="text" id="input-name" placeholder="Sarah Jenkins" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Email or Phone Number</label>
+          <input type="text" id="input-email" required placeholder="name@example.com or phone number" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Password</label>
+            <a href="javascript:void(0)" onclick="if(window.showToast) showToast('Password reset link sent to your email!', 'info');" class="text-[11px] text-blue-600 dark:text-blue-400 hover:underline">Forgot?</a>
+          </div>
+          <div class="relative">
+            <input type="password" id="input-password" required placeholder="Enter your password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs outline-none focus:ring-2 focus:ring-blue-500">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs hover:text-slate-600">
+              <i class="fa-solid fa-eye" id="pwd-eye-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" checked class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+            <span class="text-slate-600 dark:text-slate-400">Remember this device</span>
+          </label>
+        </div>
+
+        <button type="submit" id="auth-submit-btn" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/30 text-xs transition-all flex items-center justify-center gap-2">
+          <span>Sign In</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Social / OTP Logins -->
+      <div class="relative flex py-2 items-center">
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+        <span class="flex-shrink mx-4 text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Or Continue With</span>
+        <div class="flex-grow border-t border-slate-200 dark:border-slate-800"></div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="handleSocialLogin('Google')" class="py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 text-xs font-semibold flex items-center justify-center gap-2 shadow-sm">
+          <i class="fa-brands fa-google text-rose-500"></i> Google
+        </button>
+        <button onclick="handleSocialLogin('Mobile OTP')" class="py-2.5 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 text-xs font-semibold flex items-center justify-center gap-2 shadow-sm">
+          <i class="fa-solid fa-mobile-screen text-blue-500"></i> Mobile OTP
+        </button>
+      </div>
+
+      <p class="text-center text-[11px] text-slate-400">
+        By proceeding, you agree to TransVoyage's <a href="terms.html" class="underline">Terms of Carriage</a> &amp; <a href="privacy-policy.html" class="underline">Privacy Policy</a>.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-xs text-slate-400">
+    &copy; 2026 TransVoyage Tourist Bus & Traveller Rentals. All rights reserved.
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    let currentAuthMode = 'login';
+
+    function switchAuthTab(mode) {
+      currentAuthMode = mode;
+      const tabLogin = document.getElementById('tab-login');
+      const tabRegister = document.getElementById('tab-register');
+      const regNameField = document.getElementById('reg-name-field');
+      const authTitle = document.getElementById('auth-title');
+      const authSubtitle = document.getElementById('auth-subtitle');
+      const submitBtn = document.getElementById('auth-submit-btn');
+
+      if (mode === 'register') {
+        tabRegister.className = 'py-2 rounded-lg bg-white dark:bg-slate-900 text-blue-600 dark:text-white shadow-sm transition-all';
+        tabLogin.className = 'py-2 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-white transition-all';
+        regNameField.classList.remove('hidden');
+        authTitle.textContent = 'Create New Account';
+        authSubtitle.textContent = 'Join 45,000+ satisfied travelers and enjoy instant booking discounts.';
+        submitBtn.innerHTML = '<span>Create Free Account</span> <i class="fa-solid fa-arrow-right text-xs"></i>';
+      } else {
+        tabLogin.className = 'py-2 rounded-lg bg-white dark:bg-slate-900 text-blue-600 dark:text-white shadow-sm transition-all';
+        tabRegister.className = 'py-2 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-white transition-all';
+        regNameField.classList.add('hidden');
+        authTitle.textContent = 'Welcome to TransVoyage';
+        authSubtitle.textContent = 'Access your bookings, live tracking radar, and tax invoices.';
+        submitBtn.innerHTML = '<span>Sign In</span> <i class="fa-solid fa-arrow-right text-xs"></i>';
+      }
+    }
+
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('input-password');
+      const icon = document.getElementById('pwd-eye-icon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        pwdInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const isReg = currentAuthMode === 'register';
+
+      // 1. Show notification toast
+      if (isReg) {
+        if (window.showToast) {
+          showToast('Account registered successfully! Ready for fresh sign-in.', 'success');
+        }
+      } else {
+        if (window.showToast) {
+          showToast('Signed in successfully! Details cleared for fresh session.', 'success');
+        }
+      }
+
+      // 2. Display inline status banner
+      const banner = document.getElementById('auth-status-banner');
+      if (banner) {
+        banner.className = 'p-3 rounded-xl text-xs font-semibold flex items-center gap-2 border bg-emerald-50 text-emerald-800 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800 transition-all';
+        banner.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i> <span>${isReg ? 'Account registered successfully!' : 'Signed in successfully!'} Entered details washed out &amp; form is ready for a fresh sign-in.</span>`;
+        banner.classList.remove('hidden');
+
+        // Automatically hide banner after 4.5 seconds
+        setTimeout(() => {
+          banner.classList.add('hidden');
+        }, 4500);
+      }
+
+      // 3. Wash out / reset all credentials completely so form stays fresh
+      const form = document.getElementById('auth-form');
+      if (form) form.reset();
+
+      const emailInput = document.getElementById('input-email');
+      const pwdInput = document.getElementById('input-password');
+      const nameInput = document.getElementById('input-name');
+      if (emailInput) emailInput.value = '';
+      if (pwdInput) pwdInput.value = '';
+      if (nameInput) nameInput.value = '';
+
+      // Reset password toggle back to hidden
+      if (pwdInput) pwdInput.type = 'password';
+      const eyeIcon = document.getElementById('pwd-eye-icon');
+      if (eyeIcon) {
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      }
+
+      // Switch back to login mode if user just registered
+      if (isReg) {
+        switchAuthTab('login');
+      }
+    }
+
+    function handleSocialLogin(provider) {
+      if (window.showToast) {
+        showToast(`${provider} sign-in verified! Form kept fresh.`, 'info');
+      }
+      const form = document.getElementById('auth-form');
+      if (form) form.reset();
+      const emailInput = document.getElementById('input-email');
+      const pwdInput = document.getElementById('input-password');
+      if (emailInput) emailInput.value = '';
+      if (pwdInput) pwdInput.value = '';
+    }
+  </script>
+</body>
+</html>

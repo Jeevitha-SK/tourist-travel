@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Fleet by Seating Capacity | TransVoyage Tourist Bus & Traveller Rentals</title>
+  <meta name="description" content="Browse our luxury fleet classified by seat capacity: 9-12 seater tempo travellers, 16-20 seater executive vans, 26-35 seater mini coaches, and 45-53 seater Volvo buses.">
+
+  
+  <!-- Favicon / Website Brand Symbol -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+<!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-blue-600 selection:text-white transition-colors duration-200">
+
+  <!-- ================= MAIN NAVIGATION (ALIGNED LIKE REFERENCE) ================= -->
+  <header id="main-navbar" class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+      
+      <!-- Brand Logo (Left) -->
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 text-white flex items-center justify-center text-base sm:text-lg shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform shrink-0">
+          <i class="fa-solid fa-bus"></i>
+        </div>
+        <div class="min-w-0">
+          <span class="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white font-heading uppercase block leading-none">Trans<span class="text-amber-500">Voyage</span></span>
+          <span class="text-[8px] sm:text-[9px] font-bold text-amber-600 dark:text-amber-400 tracking-wider uppercase block mt-0.5 truncate max-w-[130px] sm:max-w-none">Tourist Bus &amp; Traveller</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden xl:flex items-center gap-7 text-sm font-medium">
+        <!-- Home Portals Dropdown (Outstation & Corporate) -->
+        <div class="relative group py-2">
+          <button class="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">
+            <span>Home</span>
+            <i class="fa-solid fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 w-72 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-2 text-xs space-y-1">
+              
+              <!-- Outstation & Tours Link -->
+              <a href="index.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                  <i class="fa-solid fa-bus"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 font-bold text-slate-900 dark:text-white">
+                    <span>Outstation &amp; Tours</span>
+                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-semibold">General</span>
+                  </div>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">Holiday group travel, luxury travellers &amp; per-km fare calculator</p>
+                </div>
+              </a>
+
+              <!-- Corporate & Business Link -->
+              <a href="home-corporate.html" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5 font-bold text-slate-900 dark:text-white">
+                    <span>Corporate &amp; Business</span>
+                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-semibold">B2B</span>
+                  </div>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">Enterprise mobility, executive vans, tech summits &amp; corporate RFP</p>
+                </div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">About</a>
+        <a href="fleet.html" class="text-amber-500 font-bold hover:text-amber-600 transition-colors">Fleet</a>
+
+        <a href="services.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Services</a>
+
+        <a href="pricing.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Pricing</a>
+        <a href="blog.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Blog</a>
+        <a href="contact.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Contact</a>
+
+        <a href="customer-dashboard.html" class="text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 transition-colors">Dashboard</a>
+      </nav>
+
+            <!-- Right Action Controls (Fully Responsive Single Row) -->
+      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        <!-- RTL Toggle Pill Button -->
+        <button class="rtl-toggle-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all" title="Toggle RTL/LTR direction">
+          <span class="rtl-label">RTL</span>
+        </button>
+
+        <!-- Dark/Light Mode Crescent Moon Toggle Button -->
+        <button class="theme-toggle-btn w-8 h-8 sm:w-9 sm:h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-amber-500 flex items-center justify-center shadow-sm transition-all" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-sun text-amber-400 theme-icon-light hidden text-xs"></i>
+          <i class="fa-solid fa-moon text-slate-700 dark:text-slate-300 theme-icon-dark text-xs"></i>
+        </button>
+
+        <!-- Login Text Link (Visible on sm+) -->
+        <a href="login.html" class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-amber-500 dark:hover:text-amber-400 px-2 sm:px-3 py-1.5 sm:py-2 transition-colors hidden sm:inline-block">
+          Login
+        </a>
+
+        <!-- Register Solid Amber Button (Visible on sm+) -->
+        <a href="register.html" class="hidden sm:inline-flex px-4 sm:px-5 py-2 sm:py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-md shadow-amber-500/20 hover:shadow-amber-500/35 transition-all whitespace-nowrap items-center justify-center">
+          Register
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Always visible on mobile & tablet < xl) -->
+        <button id="mobile-menu-btn" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-amber-500 flex items-center justify-center text-lg focus:outline-none transition-all shrink-0" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-slate-950/60 z-50 hidden backdrop-blur-sm"></div>
+  <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-80 max-w-full bg-white dark:bg-slate-900 z-50 transform translate-x-full transition-transform duration-300 p-6 overflow-y-auto shadow-2xl">
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-slate-800">
+      <span class="text-xl font-black text-slate-900 dark:text-white font-heading">TransVoyage</span>
+      <button id="mobile-menu-close" class="p-2 text-slate-400 hover:text-slate-600 text-xl"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="space-y-3 font-medium text-slate-800 dark:text-slate-200 text-sm">
+      <!-- Outstation &amp; Corporate Portals -->
+      <div class="space-y-1 bg-slate-50 dark:bg-slate-800/40 p-2 rounded-xl border border-slate-100 dark:border-slate-800">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block px-2 mb-1">Select Service Portal</span>
+        <a href="index.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="fa-solid fa-bus w-5 text-amber-500"></i>
+          <div>
+            <span class="font-bold block text-xs">Outstation &amp; Tours</span>
+            <span class="text-[10px] text-slate-400 block">General Fleet &amp; Holiday Rentals</span>
+          </div>
+        </a>
+        <a href="home-corporate.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="fa-solid fa-briefcase w-5 text-blue-500"></i>
+          <div>
+            <span class="font-bold block text-xs">Corporate &amp; Business</span>
+            <span class="text-[10px] text-slate-400 block">Enterprise Mobility &amp; MICE Fleet</span>
+          </div>
+        </a>
+      </div>
+
+      <a href="about.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <i class="fa-solid fa-circle-info w-5"></i> About Us
+      </a>
+      <a href="fleet.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-300 font-bold">
+        <i class="fa-solid fa-bus w-5"></i> Fleet by Seats
+      </a>
+      <a href="services.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <i class="fa-solid fa-bell-concierge w-5"></i> Services
+      </a>
+      <a href="pricing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <i class="fa-solid fa-tags w-5"></i> Pricing &amp; Rates
+      </a>
+      <a href="blog.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <i class="fa-solid fa-newspaper w-5"></i> Blog &amp; Guides
+      </a>
+      <a href="contact.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
+        <i class="fa-solid fa-envelope w-5"></i> Contact Us
+      </a>
+      <div class="pt-2 border-t border-slate-200 dark:border-slate-800">
+        <a href="customer-dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="fa-solid fa-gauge-high w-5 text-amber-500"></i> Customer Dashboard
+        </a>
+      </div>
+          <!-- Mobile Auth Action Buttons -->
+      <div class="pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 space-y-2">
+        <a href="register.html" class="flex items-center justify-center gap-2 w-full py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow-md shadow-amber-500/20 transition-all">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Register / Create Account</span>
+        </a>
+        <a href="login.html" class="flex items-center justify-center gap-2 w-full py-2 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold text-xs rounded-xl transition-all">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>Sign In</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Page Banner (Unified Luxury Scenic Background) -->
+    <!-- ================= PAGE TITLE HERO WITH TWO-COLUMN SHOWCASE ================= -->
+  <section class="page-title-banner bg-banner-fleet text-white relative overflow-hidden shadow-lg">
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-2">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left: Title, Badge, Description & Highlights -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold border border-amber-400/30">
+            <i class="fa-solid fa-list-ol"></i>
+            <span>9 to 53-Seater Range Available</span>
+          </div>
+
+          <h1 class="page-hero-title text-white font-heading font-black tracking-tight text-3xl sm:text-4xl lg:text-5xl leading-tight">
+            Explore Our <span class="text-amber-400">Complete Fleet</span> of Luxury Coaches
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed font-normal max-w-xl">
+            From 9-seater Maharaja executive vans to 53-seater multi-axle luxury tourist coaches, certified with live AIS-140 GPS, 80 km/h speed governors, and 140° plush recliner seating.
+          </p>
+
+          <!-- 3 Trust Badges with frosted glass -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs font-semibold text-white">
+            <div class="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md p-2.5 rounded-xl border border-white/10 shadow-lg">
+              <i class="fa-solid fa-couch text-amber-400 text-base"></i>
+              <div>
+                <span class="block font-bold">140° Recliners</span>
+                <span class="text-[10px] text-slate-400 font-normal">Pushback Comfort</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md p-2.5 rounded-xl border border-white/10 shadow-lg">
+              <i class="fa-solid fa-satellite-dish text-blue-400 text-base"></i>
+              <div>
+                <span class="block font-bold">Live AIS-140</span>
+                <span class="text-[10px] text-slate-400 font-normal">Govt. GPS Tracked</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-900/80 backdrop-blur-md p-2.5 rounded-xl border border-white/10 shadow-lg">
+              <i class="fa-solid fa-user-shield text-emerald-400 text-base"></i>
+              <div>
+                <span class="block font-bold">Police Verified</span>
+                <span class="text-[10px] text-slate-400 font-normal">Uniformed Chauffeurs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Themed Visual Showcase Card -->
+        <div class="lg:col-span-5 hidden sm:block">
+          <div class="banner-hero-img-wrap group">
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" alt="Modern Luxury Tourist Bus Fleet" class="banner-hero-img">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+            <!-- Floating Feature Pill Badge -->
+            <div class="absolute bottom-3 left-3 right-3 bg-slate-900/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 flex items-center justify-between text-xs font-semibold">
+              <span class="flex items-center gap-2 text-slate-200">
+                <i class="fa-solid fa-bus text-amber-400"></i>
+                <span>10 Certified Fleet Categories</span>
+              </span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30 font-bold uppercase tracking-wider">
+                Available 24/7
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Fleet Catalog Section -->
+  <section class="py-16 bg-topography-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filter Bar -->
+      <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mb-10 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30" data-filter="all">
+            All Fleets (12 Models)
+          </button>
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-filter="9-20">
+            9–20 Seater
+          </button>
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-filter="21-35">
+            21–35 Seater
+          </button>
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-filter="36-45">
+            36–45 Seater
+          </button>
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-filter="46-53">
+            46–53 Seater
+          </button>
+          <button class="seat-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700" data-filter="luxury">
+            <i class="fa-solid fa-crown text-amber-500 mr-1"></i> Luxury &amp; VIP
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs text-slate-500">
+          <span>Sort By:</span>
+          <select id="fleet-sort-select" class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 outline-none">
+            <option value="seats-asc">Seating Capacity (Low to High)</option>
+            <option value="seats-desc">Seating Capacity (High to Low)</option>
+            <option value="price-asc">Rate Per Km (Low to High)</option>
+            <option value="price-desc">Rate Per Km (High to Low)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Fleet Grid -->
+      <div id="fleet-card-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. 9-Seater Force Urbania VIP Cruiser -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="tempo" data-seats="9" data-luxury="true" data-rate="26">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/2010_Mercedes-Benz_Sprinter_2500_Passenger_Van_%28W906%29.jpg/960px-2010_Mercedes-Benz_Sprinter_2500_Passenger_Van_%28W906%29.jpg" alt="Force 9-Seater Urbania VIP Cruiser" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-blue-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">9-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹26 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Force 9-Seater Urbania VIP Cruiser</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Ultra-spacious 1x1 captain configuration with ample legroom for intimate family hill tours.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> 1x1 Captain Seats</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Dual Zone AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 8 Big Luggage</div>
+                <div><i class="fa-solid fa-bolt text-emerald-500 mr-1"></i> Fast USB Chargers</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 250 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹3,200</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('urbania-9')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=tempo-12" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 12-Seater Luxury Tempo Traveller -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="tempo" data-seats="12" data-luxury="false" data-rate="22">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Force_Traveller_Luxury.jpg/960px-Force_Traveller_Luxury.jpg" alt="Force 12-Seater Luxury Traveller" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-blue-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">12-Seater</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹22 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Force 12-Seater Luxury Traveller</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">India's most popular outstation traveller. 2x1 pushback recliners, wide gangway, and deep rear boot.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> 2x1 Pushback Recliner</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Chilled Dual AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 10 Big Luggage</div>
+                <div><i class="fa-solid fa-shield text-emerald-500 mr-1"></i> GPS Tracked 80km/h</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹3,200</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('tempo-12')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=tempo-12" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 14-Seater Force Urbania Royal Executive (NEW) -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="tempo" data-seats="14" data-luxury="true" data-rate="25">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Tunas_Rent_Toyota_HiAce_Commuter_%28H200%29_minibus_20210117.jpg/960px-Tunas_Rent_Toyota_HiAce_Commuter_%28H200%29_minibus_20210117.jpg" alt="Force 14-Seater Urbania Royal Executive" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-indigo-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">14-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹25 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Force 14-Seater Urbania Royal Executive</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Ultra-smooth executive commuter with 1x1 captain seating, ambient roof lighting, and whisper-quiet cabin.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> 1x1 Captain Recliners</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Individual AC Vents</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 12 Large Bags</div>
+                <div><i class="fa-solid fa-bolt text-emerald-500 mr-1"></i> Fast USB-C Ports</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 250 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹3,600</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('urbania-14')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=tempo-14" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 17-Seater Executive Force Urbania -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="tempo" data-seats="17" data-luxury="true" data-rate="28">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Mercedes-Benz_Sprinter_VS30_black_%281%29.jpg/960px-Mercedes-Benz_Sprinter_VS30_black_%281%29.jpg" alt="Force Urbania 17-Seater Executive" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-indigo-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">17-Seater Urbania</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹28 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Force Urbania 17-Seater Executive</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">European styling with monocoque silence, independent coil suspension, and smart infotainment.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> Ergonomic Calf Rests</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Individual AC Vents</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 14 Large Bags</div>
+                <div><i class="fa-solid fa-tv text-purple-500 mr-1"></i> Android Smart TV</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹4,000</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('urbania-17')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=tempo-17" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 20-Seater Maharaja Luxury Van -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="tempo" data-seats="20" data-luxury="true" data-rate="32">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg/960px-Force_Traveller%2C_Leh-Manali_Highway.jpg" alt="20-Seater Maharaja Luxury Van" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">20-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹32 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">20-Seater Maharaja Luxury Van</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Plush 2x2 luxury recliners with ambient starlight ceiling lights, perfect for large family and wedding parties.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> Plush 2x2 Recliners</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Sub-Zero AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 16 Large Bags</div>
+                <div><i class="fa-solid fa-microphone text-rose-500 mr-1"></i> Tour Guide Mic</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹4,800</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('tempo-20')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=tempo-20" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 26-Seater Deluxe Mini Tourist Coach -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="minibus" data-seats="26" data-luxury="false" data-rate="36">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG/960px-Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG" alt="26-Seater Tourist Coach" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">26-Seater</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹36 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Eicher 26-Seater AC Tourist Bus</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">2x2 seating layout, wide gangway, overhead parcel racks, and large under-floor luggage bay.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> 2x2 Pushback Seats</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Central High AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 22 Luggage Bags</div>
+                <div><i class="fa-solid fa-music text-purple-500 mr-1"></i> Stereo Surround</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹5,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-26')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=bus-26" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. 32-Seater BharatBenz Glider Tourist Coach (NEW) -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="minibus" data-seats="32" data-luxury="true" data-rate="40">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Volvo_9700_%28PRF-925%29.jpg/960px-Volvo_9700_%28PRF-925%29.jpg" alt="BharatBenz 32-Seater Glider Tourist Coach" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">32-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹40 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">BharatBenz 32-Seater Glider Tourist Coach</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Whisper-quiet German engineering with pneumatic air suspension, 2x2 luxury recliners, and panoramic tour windows.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> 2x2 Pushback Recliner</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Multi-Zone Climate</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 28 Heavy Bags</div>
+                <div><i class="fa-solid fa-tv text-purple-500 mr-1"></i> Dual LED Smart Screens</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹6,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-32')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=bus-35" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. 35-Seater BharatBenz Tourer Executive -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="minibus" data-seats="35" data-luxury="true" data-rate="44">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Victory_Liner_Hyundai_Universe_Space_Luxury_-_856.jpg/960px-Victory_Liner_Hyundai_Universe_Space_Luxury_-_856.jpg" alt="35-Seater BharatBenz Tourer" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">35-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹44 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">BharatBenz 35-Seater Tourer Executive</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Precision German air-suspension engineering with whisper-quiet cabin and individual reading lights.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> Full Reclining Seats</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Dual AC Blowers</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 30 Luggage Bags</div>
+                <div><i class="fa-solid fa-tv text-purple-500 mr-1"></i> Dual 32" LED TVs</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹7,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-35')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=bus-35" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. 40-Seater Tata Magna High-Deck Coach -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="luxury-coach" data-seats="40" data-luxury="false" data-rate="48">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Setra_S_515_HD%2C_Busworld_Europe_2023%2C_Brussels_%28P1140120%29.jpg/960px-Setra_S_515_HD%2C_Busworld_Europe_2023%2C_Brussels_%28P1140120%29.jpg" alt="40-Seater Tata Magna Coach" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">40-Seater</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹48 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Tata Magna 40-Seater High-Deck Coach</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Elevated passenger deck with panoramic tinted glass, wide gangway, and massive undercarriage cargo holding.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> High-Back Pushback</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Heavy-Duty AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 35 Luggage Bags</div>
+                <div><i class="fa-solid fa-shield text-emerald-500 mr-1"></i> Speed Limiter 80km/h</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹8,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-40')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=bus-45" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. 45-Seater Scania Metrolink HD Coach -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="luxury-coach" data-seats="45" data-luxury="true" data-rate="54">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/MSRTC-Scania-Shivneri.jpg/960px-MSRTC-Scania-Shivneri.jpg" alt="45-Seater Scania Metrolink" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-amber-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">45-Seater VIP</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹54 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Scania Metrolink 45-Seater HD Coach</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Full multi-axle air suspension with electronically controlled roll stabilization and deep recliners.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> Full Recliner Plush</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Multi-Zone Climate</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 45 Large Bags</div>
+                <div><i class="fa-solid fa-plug text-emerald-500 mr-1"></i> USB at Every Seat</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 300 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹9,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-45')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=bus-45" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. 49-Seater Ashok Leyland Viking Intercity -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="luxury-coach" data-seats="49" data-luxury="false" data-rate="58">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Mercedes-Benz_Tourismo_M2%2C_Busworld_Europe_2023%2C_Brussels_%28P1140114%29.jpg/960px-Mercedes-Benz_Tourismo_M2%2C_Busworld_Europe_2023%2C_Brussels_%28P1140114%29.jpg" alt="49-Seater Ashok Leyland Viking" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">49-Seater</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹58 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Ashok Leyland 49-Seater Intercity</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">High-capacity charter bus built for pilgrimage groups, conventions, and university study excursions.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> High-Back Cushion</div>
+                <div><i class="fa-solid fa-snowflake text-blue-500 mr-1"></i> Dual Blower AC</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 42 Large Bags</div>
+                <div><i class="fa-solid fa-shield text-blue-500 mr-1"></i> Emergency Hatches</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 350 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹10,500</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('bus-49')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=volvo-53" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. 53-Seater Volvo 9600 Multi-Axle Luxury -->
+        <div class="vehicle-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+             data-category="luxury-coach" data-seats="53" data-luxury="true" data-rate="65">
+          <div class="card-img-container">
+            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/MSRTC-Ashwameh-Volvo.jpg/960px-MSRTC-Ashwameh-Volvo.jpg" alt="53-Seater Volvo 9600" class="card-img-standard">
+            <span class="absolute top-3 left-3 bg-purple-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg z-10">53-Seater Volvo</span>
+            <span class="absolute top-3 right-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg z-10">₹65 / km</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white font-heading">Volvo 9600 Multi-Axle Luxury Cruiser</h3>
+                <span class="text-amber-500 text-xs font-bold"><i class="fa-solid fa-star"></i> 5.0</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">The ultimate flagship of long-distance intercity luxury touring with steerable tag axle and calf support.</p>
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300 mb-4">
+                <div><i class="fa-solid fa-chair text-amber-500 mr-1"></i> Semi-Sleeper Calf Rest</div>
+                <div><i class="fa-solid fa-shield-halved text-blue-500 mr-1"></i> EBS + Hill Start Assist</div>
+                <div><i class="fa-solid fa-suitcase text-slate-400 mr-1"></i> 55+ Heavy Bags</div>
+                <div><i class="fa-solid fa-wifi text-emerald-500 mr-1"></i> Onboard High-Speed Wi-Fi</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 block">Min Run: 350 km/day</span>
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Local 8h: ₹12,000</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="openFleetDetailsModal('volvo-53')" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-lg transition-colors border border-slate-200 dark:border-slate-700">
+                  View Details
+                </button>
+                <a href="customer-dashboard.html?tab=tab-book-vehicle&vehicle=volvo-53" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow transition-all">
+                  Book Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bg-slate-950 text-slate-400 text-xs pt-14 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Main Footer Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-10">
+        
+        <!-- Col 1: About TransVoyage (5 cols) -->
+        <div class="md:col-span-5 lg:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/20">
+              <i class="fa-solid fa-bus"></i>
+            </div>
+            <span class="text-2xl font-black text-white font-heading uppercase tracking-tight">Trans<span class="text-amber-500">Voyage</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed pr-4 lg:pr-8">
+            Leading charter transport provider specializing in premium tourist buses and tempo travellers. Trusted by over 45,000 satisfied passengers for corporate shuttles, outstation vacations, weddings, and pilgrimages across India.
+          </p>
+          <div class="flex items-center gap-3 text-sm pt-1">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-blue-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-blue-400 flex items-center justify-center transition-colors"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-pink-600 flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-blue-700 flex items-center justify-center transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation & Quick Links (3 cols) -->
+        <div class="md:col-span-3 lg:col-span-3 space-y-3">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider font-heading">Navigation</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-amber-400 transition-colors">Outstation &amp; Tours</a></li>
+            <li><a href="home-corporate.html" class="hover:text-amber-400 transition-colors">Corporate &amp; Business Fleet</a></li>
+            <li><a href="about.html" class="hover:text-amber-400 transition-colors">About Us</a></li>
+            <li><a href="fleet.html" class="hover:text-amber-400 transition-colors">Our Fleet</a></li>
+            <li><a href="services.html" class="hover:text-amber-400 transition-colors">Services</a></li>
+            <li><a href="pricing.html" class="hover:text-amber-400 transition-colors">Pricing &amp; Rates</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition-colors">Contact Us</a></li>
+            <li><a href="customer-dashboard.html" class="hover:text-amber-400 transition-colors">Customer Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Central Booking Hub & Contact (4 cols) -->
+        <div class="md:col-span-4 lg:col-span-4 space-y-3.5">
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider font-heading">Central Booking Hub</h4>
+          <p class="flex items-start gap-2.5 leading-relaxed">
+            <i class="fa-solid fa-location-dot text-blue-500 mt-1 flex-shrink-0"></i>
+            <span>Fleet Terminal Hub 4, Outer Ring Road, Bangalore 560103</span>
+          </p>
+          <p class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-emerald-500 flex-shrink-0"></i>
+            <a href="tel:+919876543210" class="hover:text-white transition-colors font-semibold text-slate-200">+91 98765 43210 (24/7 Helpline)</a>
+          </p>
+          <p class="flex items-center gap-2.5">
+            <i class="fa-solid fa-envelope text-amber-500 flex-shrink-0"></i>
+            <a href="mailto:bookings@transvoyage.com" class="hover:text-white transition-colors">bookings@transvoyage.com</a>
+          </p>
+          <div class="pt-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-emerald-400 font-semibold shadow-sm">
+              <i class="fa-solid fa-circle-check"></i> 24/7 Roadside Assistance &amp; Live Radar
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar with Proper Padding and Alignment -->
+      <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <p class="text-slate-400 text-center sm:text-left">&copy; 2026 TransVoyage Tourist Bus &amp; Traveller Rentals. All Rights Reserved.</p>
+        <div class="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-5 text-xs">
+          <a href="privacy-policy.html" class="hover:text-amber-400 transition-colors py-1">Privacy Policy</a>
+          <span class="text-slate-700 select-none">&bull;</span>
+          <a href="terms.html" class="hover:text-amber-400 transition-colors py-1">Terms of Carriage</a>
+          <span class="text-slate-700 select-none">&bull;</span>
+          <a href="coming-soon.html" class="hover:text-amber-400 transition-colors py-1">Sleeper Coach Launch</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
