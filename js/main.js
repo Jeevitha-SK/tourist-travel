@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initVehicleComparison();
   initStickyHeader();
   initCabinVisualizer();
+  initPhoneInputs();
 });
 
 /* ==========================================
@@ -1201,4 +1202,58 @@ function initCabinVisualizer() {
   // Initial render with 17 seats
   renderLayout('17');
 }
+
+/* ==========================================
+   11. PHONE NUMBER INPUT RESTRICTION
+   Strictly accepts only numeric phone values (0-9, optional leading '+', space, hyphen)
+   Prevents any alphabetic characters or invalid symbols
+   ========================================== */
+function initPhoneInputs() {
+  const phoneInputs = document.querySelectorAll('input[type="tel"]');
+  phoneInputs.forEach(input => {
+    input.setAttribute('inputmode', 'tel');
+    if (!input.hasAttribute('pattern')) {
+      input.setAttribute('pattern', '^[+]?[0-9\\s-]{7,15}$');
+    }
+    if (!input.hasAttribute('title')) {
+      input.setAttribute('title', 'Please enter a valid phone number (numeric values only)');
+    }
+
+    // Keypress filter: prevent typing alphabets & non-phone characters immediately
+    input.addEventListener('keypress', function(e) {
+      // Allow browser shortcuts / function keys (Ctrl, Alt, Meta, arrows, etc.)
+      if (e.ctrlKey || e.altKey || e.metaKey || e.key.length > 1) return;
+
+      // Only allow digits 0-9, leading '+', space, and hyphen
+      if (!/[0-9+\s-]/.test(e.key)) {
+        e.preventDefault();
+        return false;
+      }
+
+      // Allow '+' only at the very first position and only once
+      if (e.key === '+' && (this.selectionStart !== 0 || this.value.includes('+'))) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Input sanitization: strips alphabets and invalid characters on paste, drop, or virtual keyboard
+    input.addEventListener('input', function() {
+      const prevVal = this.value;
+      // Strip any alphabets and invalid characters
+      let cleaned = prevVal.replace(/[^0-9+\s-]/g, '');
+
+      // Ensure '+' only appears once and at the beginning
+      if (cleaned.includes('+')) {
+        const hasLeading = cleaned.startsWith('+');
+        cleaned = (hasLeading ? '+' : '') + cleaned.replace(/\+/g, '');
+      }
+
+      if (prevVal !== cleaned) {
+        this.value = cleaned;
+      }
+    });
+  });
+}
+
 
